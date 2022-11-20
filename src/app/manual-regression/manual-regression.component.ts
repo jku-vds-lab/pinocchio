@@ -4,6 +4,7 @@ import {PlotlyPlotComponent} from "../plotly-plot/plotly-plot.component";
 import {SomePlotComponent} from "../some-plot/some-plot.component";
 import {PlotterComponent} from "../plotter/plotter.component";
 import {StatisticsCore} from "../statistics-core";
+import {CatTestCore} from "../cat-test-core";
 @Component({
   selector: 'app-manual-regression',
   templateUrl: './manual-regression.component.html',
@@ -11,6 +12,7 @@ import {StatisticsCore} from "../statistics-core";
 })
 export class ManualRegressionComponent implements OnInit {
   public labels: [] | undefined;
+  public label_cat: [] | undefined;
   public sel=[0, 0];
   public selg = "";
   public pval: any = 0;
@@ -29,6 +31,11 @@ export class ManualRegressionComponent implements OnInit {
   p: number = 0.0;
     compare: number = 0.0;
   signiv: number = 95;
+  chi_pearson_squared: number=0.0;
+  chi_degree_freedom: number=0.0;
+  chi_significant: number=0.0;
+  
+
 
 
   constructor() {
@@ -41,34 +48,9 @@ export class ManualRegressionComponent implements OnInit {
   }
   ngOnInit(): void {
     // @ts-ignore
-    //this.labels = GlobalVars.csvobj.getColumnNames();
     this.labels = GlobalVars.datahandler.numericColumns
-    //this.labels = GlobalVars.data[0]
-    /*
-    var { jStat } = require('jstat')
     // @ts-ignore
-    var A = []
-    var b = []
-    // @ts-ignore
-    // @ts-ignore
-    for (let i=1; i<GlobalVars.data.length ;i++){
-      // @ts-ignore
-      //
-      let aa = [1.0, Number(GlobalVars.data[i][this.sel[0]])]
-      A.push(aa)
-      // @ts-ignore
-      //GlobalVars.data[i][this.sel[1]]
-      b.push(Number(GlobalVars.data[i][this.sel[1]]))
-      // @ts-ignore
-    }
-    var model=jStat.models.ols(b, A);
-    this.k = model.coef[1]
-    this.d = model.coef[0]
-    GlobalVars.k = this.k
-    GlobalVars.d = this.d
-    this.r2 = model.R2
-    this.pval = model.t.p*/
-
+    this.label_cat = GlobalVars.datahandler.categoricColumns
   }
   onSelected(event: any, number: number) {
     let sc = new StatisticsCore()
@@ -106,6 +88,18 @@ export class ManualRegressionComponent implements OnInit {
     this.p = sc.p
     this.onUpdateChild();
     this.compare = sc.compare
+
+  }
+
+
+  onchi(event: any, number: number){
+    let ctc = new CatTestCore();
+
+    let chi_erg = ctc.chisquared()
+    alert(chi_erg.significance)
+    this.chi_degree_freedom = chi_erg.degreesOfFreedom
+    this.chi_pearson_squared = chi_erg.PearsonChiSquared
+    this.chi_significant = chi_erg.significance
 
   }
 }

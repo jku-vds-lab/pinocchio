@@ -9,6 +9,7 @@ export class DATAHANDLER {
     public table: any[][] = [];
     public dataType: string[] = [];
     public numericColumns:any[] = [];
+    public categoricColumns:any[] = [];
 
     constructor() {
     }
@@ -26,9 +27,8 @@ export class DATAHANDLER {
         all_rows.shift()
 
         //now we want to check the datatypes, read the data and so on
-        for(let j =0; j< all_rows[0].split(delimiter).length; j++){
+        for(let j =0; j< all_rows[1].split(delimiter).length; j++){
             this.dataType.push(this.getType(all_rows[0].split(delimiter)[j]));
-
         }
 
 
@@ -54,6 +54,10 @@ export class DATAHANDLER {
         for(let j=0; j<this.columnNames.length;j++){
             if(this.dataType[j] === "continuous"){
                 this.numericColumns.push({"key": this.columnNames[j], "value": j})
+            }
+            if(this.dataType[j] === "categorical"){
+                // @ts-ignore
+                this.categoricColumns.push({"key": this.columnNames[j], "value": j})
             }
         }
 

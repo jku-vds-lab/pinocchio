@@ -85,5 +85,23 @@
   <div class="row">
     <p></p>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <select (change)="onchi($event,0)" class="form-select">
+        <option *ngFor="let label of label_cat; index as i" value="{{label['value']}}">{{label['key']}}</option>
+      </select>
+
+      <select (change)="onchi($event, 1)" class="form-select">
+        <option *ngFor="let label of label_cat; index as i" value="{{label['value']}}">{{label['key']}}</option>
+      </select>
+    </div>
+    <div class="col-sm-6">
+      <p>PearsonChiSquared: {{chi_pearson_squared}},
+        <br>
+        degreesOfFreedom: {{chi_degree_freedom}},
+        <br>
+        significance: {{chi_significant}}</p>
+    </div>
+  </div>
 
 </main>

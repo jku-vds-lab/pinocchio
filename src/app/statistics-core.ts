@@ -26,7 +26,6 @@ export class StatisticsCore {
             this.data.push({x: x[i], y: y[i]})
         }
     }
-
     calculateRegression(){
         var Statistics = require('../../node_modules/statistics.js/statistics');
         let testVars = {
