@@ -1,0 +1,89 @@
+<main>
+  <p>
+    Dear User, please look at the data!
+    <br> Can you find some Reltionship?
+    Seems like it right?
+  </p>
+
+  <form>
+    <div class="row">
+      <div class="col-sm-6">
+        <select (change)="onSelected($event,0)" class="form-select">
+          <option *ngFor="let label of labels; index as i" value="{{label['value']}}">{{label['key']}}</option>
+        </select>
+      </div>
+      <div class="col-sm-6">
+        <select (change)="onSelected($event, 1)" class="form-select">
+          <option *ngFor="let label of labels; index as i" value="{{label['value']}}">{{label['key']}}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <p></p>
+  <p>Here you can find the graph and the parameters!</p>
+  <!--<select class="form-control">
+    <option value="Default">Default</option>
+    <option value="Normalize">Normalize the Data</option>
+  </select>-->
+  <div class="row">
+    <div class="col-sm-6">
+
+      <app-plotter></app-plotter>
+
+    </div>
+    <div class="col-sm-6">
+      <p><strong>f(x)={{this.beta0.toFixed(3)}}+{{this.beta1.toFixed(3)}}*x</strong></p>
+      <p><br></p>
+<p></p>g
+      <p>SIGNIFICANCE on a 95 % level <strong> {{this.t>this.compare}} </strong></p>
+      <p></p>
+      <br>
+      <table>
+        <tr>
+          <th>Measure</th>
+          <th>Value</th>
+          <th>Explain</th>
+        </tr>
+        <tr>
+          <td>R2</td>
+          <td>{{this.r2.toFixed(2)}}</td>
+          <td><small>[0-1] how much variance is explained by the regression (best=1)</small></td>
+        </tr>
+        <tr>
+          <td>adjusted R2</td>
+          <td>{{this.r2o.toFixed(2)}}</td>
+          <td><small>[0-1] how much variance is explained by the regression (best=1)</small></td>
+        </tr>
+        <tr>
+          <td>Correlation</td>
+          <td>{{this.corr.toFixed(2)}}</td>
+          <td><small>[0-1] how much correlation is between x,y</small></td>
+        </tr>
+        <tr>
+          <td>Intercept</td>
+          <td>{{this.beta0.toFixed(2)}}</td>
+          <td><small>y-axis</small></td>
+        </tr>
+        <tr>
+          <td>Slope</td>
+          <td>{{this.beta1.toFixed(2)}}</td>
+          <td><small>the slope of the regression</small></td>
+        </tr>
+        <tr>
+          <td>Standard Error</td>
+          <td>{{this.s_err.toFixed(2)}}</td>
+          <td><small>The standard error</small></td>
+        </tr>
+        <tr>
+          <td> t-Value</td>
+          <td>{{this.t.toFixed(2)}}</td>
+          <td><small>|t-value| > {{this.compare.toFixed(2)}}</small></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <p></p>
+  </div>
+
+</main>

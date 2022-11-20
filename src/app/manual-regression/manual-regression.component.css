@@ -1,0 +1,15 @@
+td{
+    border-left: 1px solid black;
+    margin: 1px;
+    min-width: 10rem;
+    text-align: center;
+}
+tr{
+    border-bottom: 1px solid black;
+}
+td:last-child{
+    border-right: 1px solid black;
+}
+main{
+    padding: 2rem;
+}

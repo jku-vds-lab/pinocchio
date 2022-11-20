@@ -1,0 +1,10 @@
+#inspect_table{
+    max-width: 100%;
+}
+#inspect_cont{
+    overflow: scroll;
+    width: 100%;
+}
+th{
+    border-right: 1px solid black;
+}
