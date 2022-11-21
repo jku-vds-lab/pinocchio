@@ -35,6 +35,7 @@ export class ManualRegressionComponent implements OnInit {
   chi_degree_freedom: number=0.0;
   chi_significant: number=0.0;
   
+  cat_sel = [0, 1];
 
 
 
@@ -93,13 +94,22 @@ export class ManualRegressionComponent implements OnInit {
 
 
   onchi(event: any, number: number){
+    this.cat_sel[number] =  event.target.value
     let ctc = new CatTestCore();
+    let x:number[] = []
+    let y:number[] = []
+    for(let i=0;i<GlobalVars.datahandler.table.length;i++){
+      // @ts-ignore
+      x.push(GlobalVars.datahandler.table[i][this.cat_sel[0]])
+      y.push(GlobalVars.datahandler.table[i][this.cat_sel[1]])
 
+    }
+    ctc.inputData(x, y);
     let chi_erg = ctc.chisquared()
-    alert(chi_erg.significance)
     this.chi_degree_freedom = chi_erg.degreesOfFreedom
     this.chi_pearson_squared = chi_erg.PearsonChiSquared
     this.chi_significant = chi_erg.significance
+    this.onUpdateChild();
 
   }
 }

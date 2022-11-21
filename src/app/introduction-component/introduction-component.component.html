@@ -1,14 +1,43 @@
-<h1>Statistics</h1>
-<h2>Introduction to the general problem</h2>
-<p>Modern Science is mostly based on Data. Recently especially during the Covid19 Pandemic we saw
-    how important it is to base ones decision on data. The problem of course is, when you can show data which seems related it does not at all mean that there is indeed a relationship.</p>
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Statistics</h1>
+        <h2>Introduction to the general problem</h2>
+        <p>Modern Science is mostly based on Data. Recently especially during the Covid19 Pandemic we saw
+            how important it is to base ones decision on data. The problem of course is, when you can show data which seems related it does not at all mean that there is indeed a relationship.</p>
 
-<h2>Spurious Relationsships</h2>
-<p>While it is important to see that data-based decision making is very important no matter which domain we are talking about. It could be medicine, research, business, economics or policy! <br> But one problem remains. Some basic measure to see if something has some relationship we are using correlation. Correlation shows just if variable x increases also variable y increases so one could think they are related. </p>
+        <h2>Spurious Relationsships</h2>
+        <p>While it is important to see that data-based decision making is very important no matter which domain we are talking about. It could be medicine, research, business, economics or policy! <br> But one problem remains. Some basic measure to see if something has some relationship we are using correlation. Correlation shows just if variable x increases also variable y increases so one could think they are related. </p>
 
-<h2>Statistical - Significance</h2>
-<p>To get a basic introduction what statistical tests are and how they work look at the corresponding page!</p>
-<p>Statistical Tests are one kind of technology to check if some observation is found by random or if this oberservation is so clear that the relationship must be there!</p>
-<p>Basically one has significance niveau 95 if one can say that when you repeat the experiment 100 times you will still have the same result in 95 % of the cases. </p>
+        <h2>Statistical - Significance</h2>
+        <p>To get a basic introduction what statistical tests are and how they work look at the corresponding page!</p>
+        <p>Statistical Tests are one kind of technology to check if some observation is found by random or if this oberservation is so clear that the relationship must be there!</p>
+        <p>Basically one has significance niveau 95 if one can say that when you repeat the experiment 100 times you will still have the same result in 95 % of the cases. </p>
 
-<h2>Multiple Statistical Tests as a Trap</h2>
+        <h2>Multiple Statistical Tests as a Trap</h2>
+        <p>Assume now that you have a huge dataset. Think on big companies like Google or the government. You see lots of data!<br>
+        So now lets say that if you have some intuition or have some domain knowledge about a topic and you know that something might be related.<br>
+            Ok, you check, YEAH there is a significant relation. <br>
+            But now you are tired and correlate just any things you can.
+            And now lets say we have a certain probability (very small) that things are significantly correlated.
+            <br>
+            P = 0.005
+            <br>
+            So and now you correlate: P + P + P + ...
+            <br>
+            You see the probability increases when doing many tests and its very likely at some point to find results such that they are significantly correlated.
+            <br>
+            And here there comes the point: Correlation and Causation:
+
+            Correlation: if some variable increases the other increases/decreases as well.
+
+            Causation: when some variable changes it directly affects the world and some other thing is moving.
+
+            So when observing some correlation, some regression there are three options.
+        </p>
+        <ul>
+            <li>Causality - X causes Y</li>
+            <li>Backward Causality - Y causes X</li>
+            <li>Suprious Relationship - X and Y move when changing the other but actually there is no relation.  </li>
+        </ul>
+    </div>
+</div>

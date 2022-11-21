@@ -4,7 +4,7 @@
     <br> Can you find some Reltionship?
     Seems like it right?
   </p>
-
+  <h1>Linear Regression / OLS with t-test</h1>
   <form>
     <div class="row">
       <div class="col-sm-6">
@@ -86,6 +86,11 @@
     <p></p>
   </div>
   <div class="row">
+    <div class="col-sm-12">
+      <h1>Chi2 Test</h1>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-6">
       <select (change)="onchi($event,0)" class="form-select">
         <option *ngFor="let label of label_cat; index as i" value="{{label['value']}}">{{label['key']}}</option>
@@ -103,5 +108,4 @@
         significance: {{chi_significant}}</p>
     </div>
   </div>
-
 </main>
