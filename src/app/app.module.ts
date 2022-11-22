@@ -32,7 +32,8 @@ const routes: Routes = [
   { path: 'upload', component: UploadComponentComponent },
   { path: 'manual', component: ManualRegressionComponent },
     { path: 'tests', component: StatisticalTestsComponent },
-    { path: 'inspect', component: InspectorComponent },
+    { path: 'automatic', component: InspectorComponent },
+
 
 
 ];
