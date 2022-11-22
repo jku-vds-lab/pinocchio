@@ -5,6 +5,9 @@ import {SomePlotComponent} from "../some-plot/some-plot.component";
 import {PlotterComponent} from "../plotter/plotter.component";
 import {StatisticsCore} from "../statistics-core";
 import {CatTestCore} from "../cat-test-core";
+
+
+
 @Component({
   selector: 'app-manual-regression',
   templateUrl: './manual-regression.component.html',
@@ -105,7 +108,7 @@ export class ManualRegressionComponent implements OnInit {
 
     }
     ctc.inputData(x, y);
-    let chi_erg = ctc.chisquared()
+    let chi_erg = ctc.chi_squared()
     this.chi_degree_freedom = chi_erg.degreesOfFreedom
     this.chi_pearson_squared = chi_erg.PearsonChiSquared
     this.chi_significant = chi_erg.significance
