@@ -18,6 +18,8 @@ export class StatisticsCore {
     signv: number = 95;
 
     inputData(x: [], y:[]){
+
+
         this.x = x
         this.y = y
         this.data = []
@@ -27,6 +29,8 @@ export class StatisticsCore {
         }
     }
     calculateRegression(){
+
+
         var Statistics = require('../../node_modules/statistics.js/statistics');
         let testVars = {
             x: 'metric',
@@ -87,28 +91,28 @@ export class StatisticsCore {
 
         underterm = underterm - n*this.get_average()*this.get_average()
         underterm = Math.sqrt(underterm)
-        console.log("ttest");
-        console.log(underterm)
+        //console.log("ttest");
+        //console.log(underterm)
         return Math.abs(this.beta1)/(this.get_standard_error()/underterm)
     }
 
     private t_table(sig_niv:number){
         var { jStat } = require('jstat')
 
-        console.log("###################!!!")
+        //console.log("###################!!!")
 
         //this function works until 250
         let statics =jStat.studentt.inv((1 - (1 - sig_niv) / 2), this.data.length-2)
 
 
 
-        console.log(statics)
+        //console.log(statics)
         return statics
     }
 
     private get_standard_error() {
-        console.log("=================")
-        console.log(this.data)
+        //console.log("=================")
+        //console.log(this.data)
         var n=this.data.length
         var se = 0
         for(let i = 0; i<n;i++){

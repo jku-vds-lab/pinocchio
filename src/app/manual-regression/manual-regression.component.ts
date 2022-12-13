@@ -78,20 +78,43 @@ export class ManualRegressionComponent implements OnInit {
       y.push(GlobalVars.datahandler.table[i][GlobalVars.selected2])
 
     }
-    // @ts-ignore
-    sc.inputData(x, y);
-    sc.calculateRegression()
-    GlobalVars.line = sc.getRegLine();
-    this.r2 = sc.R2
-    this.r2o = sc.R2_optimized
-    this.beta0 = sc.beta0
-    this.beta1 = sc.beta1
-    this.corr = sc.correlation
-    this.s_err = sc.s_error
-    this.t = sc.t
-    this.p = sc.p
-    this.onUpdateChild();
-    this.compare = sc.compare
+
+
+    let checkForOne = function(arr: Iterable<unknown> | null | undefined){
+      return (new Set(arr)).size === 1;
+    }
+
+    if(checkForOne(x) || checkForOne(y)){
+      this.r2 = 0
+      this.r2o = 0
+      this.beta0 = 0
+      this.beta1 = 0
+      this.corr = 0
+      this.s_err = 0
+      this.t = 0
+      this.p = 0
+      this.onUpdateChild();
+      this.compare = 0
+    }
+    else {
+      // @ts-ignore
+      sc.inputData(x, y);
+      sc.calculateRegression()
+      GlobalVars.line = sc.getRegLine();
+      this.r2 = sc.R2
+      this.r2o = sc.R2_optimized
+      this.beta0 = sc.beta0
+      this.beta1 = sc.beta1
+      this.corr = sc.correlation
+      this.s_err = sc.s_error
+      this.t = sc.t
+      this.p = sc.p
+      this.onUpdateChild();
+      this.compare = sc.compare
+    }
+
+
+
 
   }
 

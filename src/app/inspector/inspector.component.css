@@ -10,6 +10,7 @@ td{
 
 td{
     background-color: #d3e7ff;
+    padding: 0.2rem;
 }
 
 table{
@@ -17,4 +18,7 @@ table{
     width: 100%;
     text-align: center;
     overflow: scroll;
+}
+.cl-true{
+    background-color: green;
 }

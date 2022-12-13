@@ -3,7 +3,7 @@
 
     <table id="inspect_table" class="table table-striped">
         <tr *ngFor="let rw of table; index as i">
-            <td *ngFor="let elem of rw; index as i">{{elem}}</td>
+            <td *ngFor="let elem of rw; index as i" class="cl-{{elem}}">{{elem}}</td>
         </tr>
 
     </table>
