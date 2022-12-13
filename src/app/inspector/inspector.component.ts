@@ -12,14 +12,22 @@ export class InspectorComponent implements OnInit {
 
     table: any[][] = [[]];
     labels: any[]= [];
+    sel_lables: any[] = [];
 
   constructor() {
       this.labels = GlobalVars.datahandler.numericColumns
+      this.sel_lables = this.labels
+      this.sel_lables.unshift({key: "Any", value: 999})
 
   }
 
   ngOnInit(): void {
       //prepare table
+      this.prepare()
+
+  }
+
+  prepare(){
       for(let row=0;row<this.labels.length+1;row++){
           this.table.push([]);
           for(let col=0;col<this.labels.length+1;col++){
@@ -33,6 +41,7 @@ export class InspectorComponent implements OnInit {
                   this.table[row].push(this.labels[row-1]["key"])
               }
               else{
+
                   this.table[row].push(this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]))
               }
 
@@ -67,6 +76,39 @@ export class InspectorComponent implements OnInit {
       return sc.t > sc.compare
   }
 
+    onSelected(event: any) {
+        this.table = [[]]
+        this.prepare()
+
+        if(event.target.value === "Any"){
+
+        }
+        else{
+            //get index of the value which should not be deleted
+            let to_keep_idx = 0
+            for(let i=0; i<this.table[0].length;i++){
+                if(this.table[0][i] == event.target.value){
+                    to_keep_idx = i;
+                }
+            }
+
+            let newtab = [[]]
+
+            for(let i=0; i<this.table.length;i++){
+                newtab.push([])
+                for(let j=0; j<this.table[i].length;j++){
+                    if(to_keep_idx == j || j == 0){
+                        // @ts-ignore
+                        newtab[i].push(this.table[i][j])
+                    }
+
+                }
+            }
+            console.log(newtab)
+            console.log(this.table)
+            this.table = newtab
+        }
+    }
 }
 
 /*

@@ -1,6 +1,8 @@
 <div class="container-fluid" id="inspect_cont">
-    <p>Here comes the result</p>
-
+    <p>All or select</p>
+    <select (change)="onSelected($event)" class="form-select">
+        <option *ngFor="let label of sel_lables; index as i" value="{{label['key']}}">{{label['key']}}</option>
+    </select>
     <table id="inspect_table" class="table table-striped">
         <tr *ngFor="let rw of table; index as i">
             <td *ngFor="let elem of rw; index as i" class="cl-{{elem}}">{{elem}}</td>
