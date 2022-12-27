@@ -35,14 +35,15 @@ export class InspectorComponent implements OnInit {
                   this.table[row].push("/")
               }
               else if(row ==0 && col != 0){
-                  this.table[row].push(this.labels[col-1]["key"])
+                      this.table[row].push(this.labels[col-1]["key"])
               }
               else if(row != 0 && col == 0){
-                  this.table[row].push(this.labels[row-1]["key"])
+                      this.table[row].push(this.labels[row-1]["key"])
+
+
               }
               else{
-
-                  this.table[row].push(this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]))
+                      this.table[row].push(this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]))
               }
 
 

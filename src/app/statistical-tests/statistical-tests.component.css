@@ -1,0 +1,36 @@
+main{
+    padding: 5rem;
+    font-size: 1.5rem;
+}
+.img_cont>img{
+    width: 50%;
+}
+.img_cont{
+    text-align: center;
+}
+#sp_1{
+    height: 500px;
+    width: auto;
+}
+aside{
+    text-align: center;
+}
+section{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    border-bottom: 1px dotted black;
+    min-height: 50rem;
+}
+#sp2>img{
+    width: 25%;
+}
+#sp3>img{
+    width: 25%;
+}
+h2{
+    color: #000057;
+    font-style: oblique;
+    text-decoration: underline;
+}

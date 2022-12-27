@@ -1,37 +1,210 @@
-<h1>How they work</h1>
+<main class="container-fluid">
+    <h1>Mutliple Testing</h1>
+    <section>
+        <p>Statistics is defined as the Science of studying and developing methods for intelligent analysis of data.
+            This methods are then used for many different other sciences to gain knowledge. In Economics one talks about Econometrics which is a combination of Statistics and Research-Designs. In Natural Sciences one describes experiments and their outcomes through statistics. Medicine needs to test new drugs for their effectiveness. Basically one could argue: without statistics there is no science and no journalism.
+        </p>
 
-<h2>t-Test</h2>
-<p>...</p>
-<h3>t-Test in Linear Regression</h3>
-<p>For statistical tests we need always two hypothesis! A null hypothesis we want to reject.
-In linear regression it is of course a bit more difficult.
+        <p>The more one thinks about the importance of statistics the more important it is educate people about the traps and problems when using statistics in an uninformed way!</p>
 
-    Generally one needs to evaluate if there is a statistically significant relationship between the x and y.
-<br>
-    So we have
-    <br>
-    <br>
-    <b>H0: β1 = 0 i.e (the slope is equal to zero)</b><br>
-    <b>HA: β1 != 0 (the slope is not equal to zero)</b>
-</p>
+        <p>Just consider this picture below: Does it make sense?</p>
+        <div class="img_cont">
+            <img src="assets/chart.png">
+        </div>
 
-<p>
-    Caclulate the test statistic <br>
-    t = b / SE_b <br>
+        Every reasonable person must appreciate this is none-sense!
+    </section>
+    <section>
+        <h2>Inferential - Statistics</h2>
 
-    where we have<br>
-    b: coefficient<br>
-    SE_b: standard error of the coefficient estimate
+        <p>Two types of statistics exist, we have descriptive statistics and inferential statistics</p>
+        <aside class="row">
+            <div class="col-sm-6">
+                <strong>Descriptive Statistics</strong>
+                <p>Describing Data, especially ground populations.</p>
+            </div>
+            <div class="col-sm-6">
+                <strong>Inferential Statistics</strong>
+                <p>Draw a sample (representative) and conclude how the population behaves!</p>
+
+                <div class="img_cont">
+                    <img src="https://statsandr.com/blog/what-is-the-difference-between-population-and-sample_files/population-sample.png">
+                </div>
+            </div>
+        </aside>
+    </section>
+    <section>
+        <h2>Correlation and Causation</h2>
+        <p>The above image already implies what correlation is, a quick reminder what correlation is!</p>
+        <p>Correlation is a statistical dependence i.e. you can infer something about datapoints y dependent on datapoint x</p>
+        <p>Classical example: higher BMI (body mass index) correlates with higher incidence of certain diseases! <br> But however is this realy causal? Do just higher weight imply this diseases?</p>
+
+        <p>Causation however means that something is indeed the reason for the effect(correlation) is a causal relationship and not by chance. To distinguish between things occuring by chance and founded evidence one has to do statistical tests and clever-research designs.</p>
+
+        <div class="img_cont">
+            <img src="assets/bald_men.png">
+        </div>
+        Intresting!!! But is this true? Can you explain it by natural science?
+        <div class="img_cont" id="sp2">
+            <img src="assets/causation_correlation.png">
+        </div>
+
+    </section>
+    <section>
+        <h2>Sometimes pets and small children are right even then when all evidence says something different</h2>
+
+        <div class="img_cont" id="sp3">
+            <img id="sp_1" src="https://media.cheggcdn.com/media/ae5/ae5fb628-dbe6-4af5-a82f-8ab754d8befc/php9t3Ybz">
+        </div>
+    </section>
+    <section>
+        <h2>A statistical application</h2>
+
+        <p>However lets leave the question of correlation and causation as its root alone for now. Its a very important and difficult question in different sciences and subject to clever research designs which are most-likely even domain specific!</p>
+        <p>Lets look on statistical tests and multiple testing. Inferential statistics tries to infer knowledge based on observations done on data samples.
+            The key idea is the assumption that if we draw a representative sample it will have overall the same statistic properties as the ground population. The key problem of course is randomness. If one would have some technique which answers how probable it is whether this result is by random chance or really true.
+        </p>
+        <p>A very good example to understand  inferential statistics and statistical tests is a medical drug effect study.
+            You draw two samples which have the same properties as the ground population.
+
+            Now the drug is prescribed to the first group while some placebo is served to the second group.
+
+            Now one formulates two hypothesis:
+
+            <br>
+            H_0: here is no difference between the groups - the drug has no effect
+            <br>
+            H_1: there is some difference between the groups - the drug causes more health, less pain whatsoever
+            <br>
+
+            In the end we want to reject the null-hypothesis i.e we want to be sure that some drug has the effect.
+
+            <br>
+            Basically now we can compare for example the means (and other descriptive statistics like median, variance, mode, ...)
+
+            e.g. the treated group has an average pain-level of 10 while the untreated group has an average pain-level of 7.
+
+            A reasonable assumption now is to assume that the drug had one effect.
+
+            But please analyse the picture below:
+        </p>
+
+        <div class="img_cont">
+            <img src="assets/Untitled2.gif">
+        </div>
+        <p>Okay now lets look a bit closer, it seems that the drug has an effect the mean diverges after the treatment. Ok Null-Hypothesis rejected perfect drug will be produced and selled to all people around the world right? Hmm not quite right? For now dismiss that if there is some effect it is quite small but when thinking about it more closely it could be that the change in pain-level is just by chance. Just look at the picture below to have more time analysing it. You see everywhere there is some probabilities (for selection, for distributing to the different groups, how advanced the ilness already is, general health condistion, ...) involved. So maybe its just by chance as already said. And now comes our statistical testing. </p>
+        <div class="img_cont">
+            <img src="assets/medical.png">
+        </div>
+    </section>
+
+    <section>
+        <h2>Statistical Significance</h2>
+
+        <p>Basically we now that probabilities follow some distribution, we can assume for reasons based on probability theory that our values for an estimator (like mean, ...) is distributed via a normal distribution</p>
+        <p>i.e our expected value which we got above is the best guess for the ground-truth-expected value. This value is distributed normally with some certain variance.</p>
+
+        <p>now we can build around our estimated value a confidence interval which just the interval between the true value has to lie with a specific probability.</p>
+
+        <p>Its more or less a common-ground in science to assume that everything between 95% is significant</p>
+
+        <div class="img_cont">
+            <img src="assets/geogebra-export.png">
+        </div>
+        <p>So basically when the 95% intervals of both distributions (i.e. the one of the control group and the one of the treatment group) do not overlap we can be sure that with 95% probability when repeating the experiment over and over again we still will have a significant difference. </p>
+        <!--<input type="range" value="{{this.v}}" class="form-control" min="0" max="6">-->
+        <div>
+            <canvas height="50%" baseChart
+                    [data]="scatterChartData2"
+                    [options]="scatterChartOptions2"
+                    [type]="scatterChartType2">
+            </canvas>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>A little experiment</h2>
+        <p>Now conduct some experiment! Basically we copy the graph from above, dark blue is our control group while cyan is our treatment. Now we generate with the parameters of our cyan curve more curves but the new mean values are also distributed normaly with N(4, 0.01) so now we get different curves. </p>
+        <p>And normally you should see in the green coloured curves that they are still significantly different but suddenly there are also in a more red-brownish colors they are suddenly not any more significantly different. </p>
+        <p><small><u>Disclaimer: the below graph is generated by random i.e the result depends on the random numbers generated and can be different each time.</u></small></p>
+        <button class="btn btn-primary" (click)="pushOne()">Generate one additional curve</button>
+        <button class="btn btn-primary" (click)="reset()">Reset</button>
+
+        <div>
+            <div>
+                <div style="display: block" >
+                    <canvas height="50%" baseChart
+                            [data]="scatterChartData"
+                            [options]="scatterChartOptions"
+                            [type]="scatterChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <p>Wanna try on some real data? On your own dataset? I have prepared some little prototype where you can play around and find significant data. <br> You can be sure that when having enough attributes you can find some significant relationship (on linear regression/OLS) which is complete non-sense </p>
+        <a class="btn btn-primary" routerLink="/upload">Go to data upload</a><br>
+        <a class="btn btn-primary" routerLink="/manual">Go directly to playaround</a><br>
+        <a class="btn btn-primary" routerLink="/automatic">Go directly to automatic scan</a><br>
+
+        <p>So we can conclude now the following -> automatic scanning can be dangerous.</p>
+    </section>
+    <section>
+        <h2>Strategy for Multiple Testing I</h2>
+        <p>Actually the most safest strategy is simple. Whenever doing data-driven research one should first have some theory.</p>
+        <p>So always think first, what could be, what you are searching for, what does domain-specific theory say? Then make confirmatory data-analytics and only do analytics which is "meaningful". Of course this is rather limited. Often we do not have a theory and past research or the data is too abstract to use common-sensen. A very important field is exploratory data-analytics which just means searching for data and then try to explain the results. This exploratory data analytics is not possible with this rather simple approach.</p>
+
+        <div class="img_cont">
+            <img src="https://datos.gob.es/sites/default/files/u322/grafico.jpg">
+        </div>
+
+
+    </section>
+
+    <section>
+        <h2>Strategy for Multiple Testing II</h2>
+    </section>
 
 
 
-</p>
+    <h2>t-Test</h2>
+    <p>...</p>
+    <h3>t-Test in Linear Regression</h3>
+    <p>For statistical tests we need always two hypothesis! A null hypothesis we want to reject.
+        In linear regression it is of course a bit more difficult.
 
-<p>
-    If the p-value that corresponds to t is less than some threshold (e.g. α = .05) then we reject the null hypothesis and conclude that there is a statistically significant relationship between the predictor variable and the response variable.
+        Generally one needs to evaluate if there is a statistically significant relationship between the x and y.
+        <br>
+        So we have
+        <br>
+        <br>
+        <b>H0: β1 = 0 i.e (the slope is equal to zero)</b><br>
+        <b>HA: β1 != 0 (the slope is not equal to zero)</b>
+    </p>
 
-    The following example shows how to perform a t-test for a linear regression model in practice.
-</p>
-<p>https://www.reed.edu/economics/course_pages.archive/red_spots/testing_hypotheses.htm</p>
-<p>https://vitalflux.com/linear-regression-t-test-formula-example/</p>
-<p>https://www.statology.org/t-test-linear-regression/</p>
+    <p>
+        Caclulate the test statistic <br>
+        t = b / SE_b <br>
+
+        where we have<br>
+        b: coefficient<br>
+        SE_b: standard error of the coefficient estimate
+
+
+
+    </p>
+
+    <p>
+        If the p-value that corresponds to t is less than some threshold (e.g. α = .05) then we reject the null hypothesis and conclude that there is a statistically significant relationship between the predictor variable and the response variable.
+
+        The following example shows how to perform a t-test for a linear regression model in practice.
+    </p>
+    <p>https://www.reed.edu/economics/course_pages.archive/red_spots/testing_hypotheses.htm</p>
+    <p>https://vitalflux.com/linear-regression-t-test-formula-example/</p>
+    <p>https://www.statology.org/t-test-linear-regression/</p>
+
+
+
+
+
+</main>

@@ -9,8 +9,10 @@ td{
 }
 
 td{
-    background-color: #d3e7ff;
     padding: 0.2rem;
+    margin: 0.1rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
 }
 
 table{
@@ -18,7 +20,11 @@ table{
     width: 100%;
     text-align: center;
     overflow: scroll;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
 }
 .cl-true{
-    background-color: green;
+    background-color: #00ff00;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;    border-radius: 1rem;
 }
