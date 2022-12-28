@@ -1,0 +1,13 @@
+<canvas baseChart class="chart"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+<div class="button-row">
+    <button class="btn btn-primary"  (click)="pushOne()">Push</button>
+
+    <button class="btn btn-primary" (click)="hideOne(0)">Toggle H_0</button>
+    <button class="btn btn-primary" (click)="hideOne(1)">Toggle H_1</button>
+    <button class="btn btn-primary" (click)="hideOne(2)">Toggle sig-level H_0</button>
+</div>

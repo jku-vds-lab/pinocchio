@@ -22,6 +22,7 @@ import { InspectorComponent } from './inspector/inspector.component';
 import { SomePlotComponent } from './some-plot/some-plot.component';
 import { NgChartsModule } from 'ng2-charts';
 import { PlotterComponent } from './plotter/plotter.component';
+import { SomeChartComponent } from './some-chart/some-chart.component';
 
 
 
@@ -52,8 +53,8 @@ const routes: Routes = [
     StatisticalTestsComponent,
     InspectorComponent,
     SomePlotComponent,
-    PlotterComponent
-  ],
+    PlotterComponent,
+    SomeChartComponent],
     imports: [
         BrowserModule,
         FontAwesomeModule,
