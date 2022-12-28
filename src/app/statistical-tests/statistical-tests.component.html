@@ -22,6 +22,7 @@
             <div class="col-sm-6">
                 <strong>Descriptive Statistics</strong>
                 <p>Describing Data, especially ground populations.</p>
+                <p>classical summary statistics like: mean, median, variance, standard-deviation, mode, distibution functions (cdf, pdf), graphs</p>
             </div>
             <div class="col-sm-6">
                 <strong>Inferential Statistics</strong>
@@ -30,6 +31,8 @@
                 <div class="img_cont">
                     <img src="https://statsandr.com/blog/what-is-the-difference-between-population-and-sample_files/population-sample.png">
                 </div>
+                <p>clever sampling strategies, to ensure representative samples. Weighting of samples, non-response, research designs, ...</p>
+                <p>use the same sumary statistics but with caution. Bias adjusted versions (e.g. population vs. sample variance), working more with probabilities, statistical tests</p>
             </div>
         </aside>
     </section>
@@ -44,10 +47,14 @@
         <div class="img_cont">
             <img src="assets/bald_men.png">
         </div>
-        Intresting!!! But is this true? Can you explain it by natural science?
+        <p>Intresting!!! But is this true? Can you explain it by natural science?</p>
+
+        <p>Find two graphs below, the first graph shows you what the news-article suggests. The second graph shows an alternative interpretation. To actually find out what is now the causal relationship is very hard, one would need high degree of domain knowledge to try to explain it by theory and also as mentioned multiple times, clever research designs. </p>
         <div class="img_cont" id="sp2">
             <img src="assets/causation_correlation.png">
         </div>
+
+        <p>by the way for your intrest these graphs are called DAGs - directed acyclic graphs and are often used for showing causal relationships</p>
 
     </section>
     <section>
@@ -122,7 +129,9 @@
         </div>
 
     </section>
-
+    <section>
+        <h2>Take a quick look on one testing-method "students t test"</h2>
+    </section>
     <section>
         <h2>A little experiment</h2>
         <p>Now conduct some experiment! Basically we copy the graph from above, dark blue is our control group while cyan is our treatment. Now we generate with the parameters of our cyan curve more curves but the new mean values are also distributed normaly with N(4, 0.01) so now we get different curves. </p>
@@ -142,13 +151,31 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section>
+        <h2>Overview of multiple testing</h2>
+
+        <p>Multiple testing is for example important in natural sciences i.e. when considering DNA-Research (<a href="https://en.wikipedia.org/wiki/Microarray">microarray-analysis</a>)</p>
+
+        <p>So again what is now the problem: we find significant relationships when doing t-tests but in reality they are not there. The problem increases with the number of experiments/estimations.</p>
+
+        <p>Again the idea is the following: we have a black box and each time doing experiments we have some certain probability to get a false-positive. This is what I wanted to show you with the above normal distribution experiment. We have some probability to get other than the values and indeed we get them.</p>
+        <p>To illustrate look at the following, initally we have a probabilty to get a right result which is quite high but than wen repeating all over again the probability for a wrong result increases significantly. </p>
+
+        <div class="img_cont">
+            <img src="assets/experi2.gif">
+        </div>
+
         <p>Wanna try on some real data? On your own dataset? I have prepared some little prototype where you can play around and find significant data. <br> You can be sure that when having enough attributes you can find some significant relationship (on linear regression/OLS) which is complete non-sense </p>
         <a class="btn btn-primary" routerLink="/upload">Go to data upload</a><br>
         <a class="btn btn-primary" routerLink="/manual">Go directly to playaround</a><br>
         <a class="btn btn-primary" routerLink="/automatic">Go directly to automatic scan</a><br>
 
         <p>So we can conclude now the following -> automatic scanning can be dangerous.</p>
+
     </section>
+
     <section>
         <h2>Strategy for Multiple Testing I</h2>
         <p>Actually the most safest strategy is simple. Whenever doing data-driven research one should first have some theory.</p>
@@ -163,11 +190,41 @@
 
     <section>
         <h2>Strategy for Multiple Testing II</h2>
+        <p>For doing exploratory data analysis where we do huge-scale multiple testing an option would be to adjust the p-value.</p>
+        <p>Multiple testing correction adjusts the p-value such that the overall result (i.e. probability of false positive) is smaller than the specified significane level (normally 95%). </p>
+
+        <p>But of course these is not the holy-grale because depending on which exact countermeasure you take you still increase also the False Negatives rate potentially. i.e. since you adjust your p-value you than say suddenly - no this is not significant even if it would be in reality. So kind-of the inverse problem</p>
+        <p>A researcher has to decide which problem is more serious- potentially missing a big hit or potentially finding something which is indeed bullshit.</p>
+        <div class="img_cont">
+            <img src="assets/graph_correction.png">
+            <p><small>Taken from: https://physiology.med.cornell.edu/people/banfelder/qbio/resources_2008/1.5_GenespringMTC.pdf</small></p>
+
+        </div>
+
+        <h3>Bonferroni correction</h3>
+        <p>This is a very simple and strict approach. The idea is to multiply the value we compare with with the number of already done tests. Here the number of misses will be quite high since we drease very fast</p>
+
+        <p>p_new = p * n</p>
+
+        <p>Consider the following row of comparisions</p>
+        <div class="img_cont">
+            <img src="assets/row.png">
+            <p><small>The significance level = 0.05 and the p value resulting would be 0,01. This value will be multiplied over again and suddenly we see that even if the outcome would not change we go over the border rather fast.</small></p>
+        </div>
+
+        <h3>Bonferroni Step-down (Holm) correction </h3>
+        <p>An adopted version of aboves correction. The experiments outcomes (p-values) are ordered from smallest to largest. The first one is calculated as p_new = p*n < 0.05. The next as p_new = p*(n-1) <0.05. And so on. </p>
+
+        <h3>Westfall and Young Permutation </h3>
+        <p>In contrast to single-step methods, where each experiment is corrected independently we have methods which permutates all at the same time</p>
+        <p>P-values are calculated for each experiment based on the original data set, then we split the data-set into parts, new p-values are calculated for each data-set, the minima are compared to the original ones, the smaller p_values are used at each comparision. </p>
+        <h3>Benjamini and Hochberg False Discovery Rate</h3>
+        <p>The experiments outcomes (p-values) are ordered from smallest to largest. The largest p-value is accepted as it is. The second one is multiplied by the fraction of #experiments / #rank and so on. </p>
+
     </section>
 
 
 
-    <h2>t-Test</h2>
     <p>...</p>
     <h3>t-Test in Linear Regression</h3>
     <p>For statistical tests we need always two hypothesis! A null hypothesis we want to reject.
