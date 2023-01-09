@@ -23,6 +23,8 @@ import { SomePlotComponent } from './some-plot/some-plot.component';
 import { NgChartsModule } from 'ng2-charts';
 import { PlotterComponent } from './plotter/plotter.component';
 import { SomeChartComponent } from './some-chart/some-chart.component';
+import { CorrectedTestingComponent } from './corrected-testing/corrected-testing.component';
+import { HeattableComponent } from './heattable/heattable.component';
 
 
 
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'manual', component: ManualRegressionComponent },
     { path: 'tests', component: StatisticalTestsComponent },
     { path: 'automatic', component: InspectorComponent },
+    { path: 'correction-test', component: CorrectedTestingComponent },
+
 
 
 
@@ -54,7 +58,9 @@ const routes: Routes = [
     InspectorComponent,
     SomePlotComponent,
     PlotterComponent,
-    SomeChartComponent],
+    SomeChartComponent,
+    CorrectedTestingComponent,
+    HeattableComponent],
     imports: [
         BrowserModule,
         FontAwesomeModule,

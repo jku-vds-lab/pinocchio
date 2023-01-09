@@ -17,7 +17,7 @@ export class SomeChartComponent implements OnInit {
         ],
         label: 'H_0',
         pointRadius: 4,
-        backgroundColor: 'rgb(0,0,255)',
+        backgroundColor: 'rgb(0,0,255)'
       },
       {
         label: 'H_1',
@@ -67,7 +67,7 @@ export class SomeChartComponent implements OnInit {
     })
 
 
-    for(let j=0; j<500;j++){
+    for(let j=0; j<400;j++){
       let someval = this.getNormallyDistributedRandomNumber(get_some_value_mean, get_some_value_std)
       this.lineChartData.datasets[this.i].data.push({x:someval, y:this.normal(someval, get_some_value_mean, get_some_value_std)})
     }
@@ -127,24 +127,24 @@ export class SomeChartComponent implements OnInit {
 
     this.lineChartData.datasets[0].data = []
 
-    for(let i=0; i<1000;i++){
+    for(let i=0; i<500;i++){
       let someval = this.getNormallyDistributedRandomNumber(0, 1)
       this.lineChartData.datasets[0].data.push({x:someval, y:this.normal(someval, 0, 1)})
     }
 
 
-    for(let i=0; i<1000;i++){
+    for(let i=0; i<500;i++){
       let someval = this.getNormallyDistributedRandomNumber(this.h1mu, 1)
       this.lineChartData.datasets[1].data.push({x:someval, y:this.normal(someval, this.h1mu, 1)})
     }
 
-    for(let i=0; i<1000;i++){
+    for(let i=0; i<500;i++){
       let someval = this.getNormallyDistributedRandomNumber(0, 1)
       this.lineChartData.datasets[0].data.push({x:someval, y:this.normal(someval, 0, 1)})
     }
 
 
-    for(let i=0; i<1000;i++){
+    for(let i=0; i<500;i++){
       let someval = this.getNormallyDistributedRandomNumber(this.h1mu, 1)
       this.lineChartData.datasets[1].data.push({x:someval, y:this.normal(someval, this.h1mu, 1)})
     }

@@ -1,43 +1,101 @@
-<div class="row">
-    <div class="col-sm-12">
-        <h1>Statistics</h1>
-        <h2>Introduction to the general problem</h2>
-        <p>Modern Science is mostly based on Data. Recently especially during the Covid19 Pandemic we saw
-            how important it is to base ones decision on data. The problem of course is, when you can show data which seems related it does not at all mean that there is indeed a relationship.</p>
+<main>
+    <div class="row">
+        <div class="col-sm-12">
+            <section>
+                <h1>Evidence</h1>
+                <p>Maybe you also have the opinion that one should make factual, evidence-based decisions in medicine, politics, companies and so on. And you are right! This is very important. Statistics are used to show us data for informed decision making. We try to show that policy measures were succesful or not. We want to show that vaccines work. We want to convince people that climate change is happening. We want to show the staff why we are expanding to china and not to the USA.</p>
+                <p>But people have to use statistics in an informed way. Because often people want to influence people by misuse.</p>
+                <p>Keep your eye open. You can find examples on many websites like "viz.wtf". A kind-of personal best-of i collected below. </p>
+                <div id="carouselExampleCaptions" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 3"></button>
 
-        <h2>Spurious Relationsships</h2>
-        <p>While it is important to see that data-based decision making is very important no matter which domain we are talking about. It could be medicine, research, business, economics or policy! <br> But one problem remains. Some basic measure to see if something has some relationship we are using correlation. Correlation shows just if variable x increases also variable y increases so one could think they are related. </p>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="assets/wtfviz/1.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Can you basically see anything?</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/2.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>38% almost 50%?</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/3.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Suddenly a much smaller number of cases is much more severe? Sudden change in colormap? </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/4.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>22% are higher than all other bars even though other figures are larger? y-axis is something absolute?</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/5.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Barchart which does not sum up to 100% is useless</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/6.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>40 000 less than 100 000?</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/7.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Suddenly 8% are more?</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/wtfviz/8.png" class="d-block" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>60% and 9% almost no difference</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <p>This was now about the public and graphs. Of course there are much more things one could do when trying to influence people. Special Research Designs could be a problem, or the misuse of statistical testing. And exactly that is the problem we want to adress with this project!</p>
+                <p>Below you can find some references and thanks to. Otherwise I would recomend you to go to the next page. <a routerLink="/tests" class="btn btn-primary">Next Page</a> </p>
+            </section>
+            <section id="thanks">
+                <h1>Thanks to</h1>
+                <ul>
+                    <li>my supervisors klaus eckelt & patrick adelberger</li>
+                    <li>to my course instructors in visual analytics marc streit, klaus eckelt & patrick adelberger</li>
+                    <li>my course instructor in data- and research designs in ecomomics alexander ahammer who had severe impact to increase my intrest in this topic</li>
+                    <li>many other university professors and course instructors during my studies of economics and aritifical inteligence</li>
+                    <li>many people on stackoverflow</li>
 
-        <h2>Statistical - Significance</h2>
-        <p>To get a basic introduction what statistical tests are and how they work look at the corresponding page!</p>
-        <p>Statistical Tests are one kind of technology to check if some observation is found by random or if this oberservation is so clear that the relationship must be there!</p>
-        <p>Basically one has significance niveau 95 if one can say that when you repeat the experiment 100 times you will still have the same result in 95 % of the cases. </p>
 
-        <h2>Multiple Statistical Tests as a Trap</h2>
-        <p>Assume now that you have a huge dataset. Think on big companies like Google or the government. You see lots of data!<br>
-        So now lets say that if you have some intuition or have some domain knowledge about a topic and you know that something might be related.<br>
-            Ok, you check, YEAH there is a significant relation. <br>
-            But now you are tired and correlate just any things you can.
-            And now lets say we have a certain probability (very small) that things are significantly correlated.
-            <br>
-            P = 0.005
-            <br>
-            So and now you correlate: P + P + P + ...
-            <br>
-            You see the probability increases when doing many tests and its very likely at some point to find results such that they are significantly correlated.
-            <br>
-            And here there comes the point: Correlation and Causation:
-
-            Correlation: if some variable increases the other increases/decreases as well.
-
-            Causation: when some variable changes it directly affects the world and some other thing is moving.
-
-            So when observing some correlation, some regression there are three options.
-        </p>
-        <ul>
-            <li>Causality - X causes Y</li>
-            <li>Backward Causality - Y causes X</li>
-            <li>Suprious Relationship - X and Y move when changing the other but actually there is no relation.  </li>
-        </ul>
+                </ul>
+            </section>
+            <section>
+                <h1>References</h1>
+                <p>The practical work as well as the theoretical background would not have been possible without these resources: </p>
+            </section>
+        </div>
     </div>
-</div>
+</main>

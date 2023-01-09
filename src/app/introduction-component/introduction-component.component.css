@@ -1,0 +1,35 @@
+section{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    border-bottom: 1px dotted black;
+    min-height: 50rem;
+}
+h2{
+    color: #000057;
+    font-style: oblique;
+    text-decoration: underline;
+}
+.carousel-caption{
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000;
+}
+main{
+    padding: 5rem;
+    font-size: 1.5rem;
+}
+.carousel-item>img{
+    display: inline;
+    max-height: 50rem;
+    overflow: scroll;
+    width: 100%;
+}
+#carouselExampleCaptions{
+    background-color: black;
+    text-align: center;
+
+}
+#thanks{
+    padding: 3rem;
+}
