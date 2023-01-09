@@ -1,18 +1,6 @@
-<table>
-    <tr>
-        <td>*</td>
-        <td>Attribute 1</td>
-        <td>Attribute 2</td>
+<table id="inspect_table" class="table table-striped">
+    <tr *ngFor="let rw of table; index as i">
+        <td *ngFor="let elem of rw; index as i" class="cl-{{elem.sign}}">{{elem.outwrite}}</td>
+    </tr>
 
-    </tr>
-    <tr>
-        <td>Attribute 1</td>
-        <td>x</td>
-        <td>y</td>
-    </tr>
-    <tr>
-        <td>Attribute 2</td>
-        <td>x</td>
-        <td>y</td>
-    </tr>
 </table>

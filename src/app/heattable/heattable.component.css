@@ -1,0 +1,16 @@
+.cl-lab{
+    padding: 0.5rem;
+    background-color: #bdbdbd;
+}
+tr{
+    border-bottom: 1px solid black;
+}
+td{
+    border-right: 1px solid black;
+}
+.cl-true{
+    background-color: rgba(0, 255, 0, 0.5);
+}
+.cl-false{
+    background-color: rgba(255, 0, 0, 0.5);
+}
