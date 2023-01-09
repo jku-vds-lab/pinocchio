@@ -17,6 +17,7 @@ export class StatisticsCore {
     compare: number = 0;
     signv: number = 95;
     private correction: string | undefined = "None";
+    private corrig: any;
 
     inputData(x: [], y:[]){
 
@@ -67,7 +68,7 @@ export class StatisticsCore {
             return jStat.ttest(this.t, this.x.length, 2)
         }
         else if(this.correction=="Bonfi"){
-            return jStat.ttest(this.t, this.x.length, 2)*this.x.length
+            return jStat.ttest(this.t, this.x.length, 2)*this.corrig
 
         }
 
@@ -146,7 +147,8 @@ export class StatisticsCore {
         return avg/this.data.length
     }
 
-    setCorrection(corr: string) {
+    setCorrection(corr: string, labels: any) {
         this.correction = corr
+        this.corrig = labels
     }
 }

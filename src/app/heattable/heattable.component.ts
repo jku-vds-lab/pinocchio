@@ -49,7 +49,7 @@ export class HeattableComponent implements OnInit {
     // @ts-ignore
     sc.inputData(x, y)
     sc.calculateRegression()
-    //sc.setCorrection("Bonfi")
+    sc.setCorrection("Bonfi", this.labels.length)
     return {t: sc.t, sigv: sc.compare, p: sc.p
     };
   }
