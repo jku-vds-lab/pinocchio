@@ -39,15 +39,19 @@ export class HeattableComponent implements OnInit {
     }
 
     if(checkForOne(x)){
-      return {t: 0, sigv:0};
+      return {t: 0, sigv:0, p: 0
+      };
     }
     if(checkForOne(y)){
-      return {t: 0, sigv:0};
+      return {t: 0, sigv:0, p: 0
+      };
     }
     // @ts-ignore
     sc.inputData(x, y)
     sc.calculateRegression()
-    return {t: sc.t, sigv: sc.compare}
+    //sc.setCorrection("Bonfi")
+    return {t: sc.t, sigv: sc.compare, p: sc.p
+    };
   }
 
   prepare(){
@@ -66,10 +70,16 @@ export class HeattableComponent implements OnInit {
 
         }
         else{
+
+
+
           let sig = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).sigv
           let t = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).t
-          this.table[row].push({outwrite: t.toFixed(2) + " > " + sig.toFixed(2),
-            sign: t>sig})
+          let p = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).p
+
+          let txt = t.toFixed(2) + " > " + sig.toFixed(2)
+          this.table[row].push({outwrite:p.toFixed(2) +"<"+0.05 ,
+            sign: p<0.05})
         }
 
 

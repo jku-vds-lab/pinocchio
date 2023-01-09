@@ -14,3 +14,11 @@ td{
 .cl-false{
     background-color: rgba(255, 0, 0, 0.5);
 }
+table{
+    overflow: scroll;
+}
+.conti{
+    padding: 2rem;
+    width: 100%;
+    overflow: scroll;
+}

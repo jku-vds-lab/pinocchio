@@ -16,6 +16,7 @@ export class StatisticsCore {
     p: number = 0.0;
     compare: number = 0;
     signv: number = 95;
+    private correction: string | undefined = "None";
 
     inputData(x: [], y:[]){
 
@@ -51,11 +52,26 @@ export class StatisticsCore {
         this.t = this.t_test()
         this.s_error = this.get_standard_error()
         this.compare = this.t_table(this.signv/100)
+        this.p = this.p_val()
 
         //this.s_e_beta =  //https://stats.stackexchange.com/questions/85943/how-to-derive-the-standard-error-of-linear-regression-coefficient
 
     }
+    p_val(){
+        if(!isFinite(this.t)){
+            return 0;
+        }
+        var { jStat } = require('jstat')
 
+        if(this.correction=="None"){
+            return jStat.ttest(this.t, this.x.length, 2)
+        }
+        else if(this.correction=="Bonfi"){
+            return jStat.ttest(this.t, this.x.length, 2)*this.x.length
+
+        }
+
+    }
     f(x:number){
         return this.beta0 + this.beta1*x
     }
@@ -128,5 +144,9 @@ export class StatisticsCore {
         }
 
         return avg/this.data.length
+    }
+
+    setCorrection(corr: string) {
+        this.correction = corr
     }
 }
