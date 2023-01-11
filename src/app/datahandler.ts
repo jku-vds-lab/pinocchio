@@ -60,6 +60,17 @@ export class DATAHANDLER {
                 this.categoricColumns.push({"key": this.columnNames[j], "value": j})
             }
         }
+        let nt = this.table
+        console.log("#complete_length"+nt.length)
+        //sample data
+        if(this.table.length>5000){
+            while(nt.length>5000){
+                let idx =  Math.floor(Math.random() * nt.length )
+                nt.splice(idx, 1)
+            }
+        }
+
+        this.table = nt
 
         console.log("#########==========<><><><><><><><>==========#########")
         //console.log(data)
