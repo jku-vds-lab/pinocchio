@@ -25,7 +25,7 @@ jobs:
         name: npm install and build
         run: |
           npm ci
-          npm run build
+          npm run deploy
         env:
           CI: true
 
@@ -33,6 +33,6 @@ jobs:
         name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1
         with:
-          build_dir: dist/angu
+          build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
