@@ -1,0 +1,38 @@
+name: Node Build+Deploy
+
+on:
+  push:
+    branches: 
+      - main
+      - deployment
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - 
+        name: Checkout Code
+        uses: actions/checkout@v1
+
+      - 
+        name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+
+      - 
+        name: npm install and build
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
+
+      - 
+        name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          build_dir: dist/angu
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
