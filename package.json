@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --output-path dist --base-href \/dist\/",
+    "deploy": "ng build --output-path dist --base-href \/pinocchio\/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
