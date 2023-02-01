@@ -28,6 +28,8 @@ export class DATAHANDLER {
 
         //now we want to check the datatypes, read the data and so on
         for(let j =0; j< all_rows[1].split(delimiter).length; j++){
+            console.log("#",this.columnNames[j], all_rows[1][j], this.getType(all_rows[0][j]))
+            console.log("#-",this.dataType.push(this.getType(all_rows[0].split(delimiter)[j])))
             this.dataType.push(this.getType(all_rows[0].split(delimiter)[j]));
         }
 
@@ -52,6 +54,7 @@ export class DATAHANDLER {
 
 
         for(let j=0; j<this.columnNames.length;j++){
+
             if(this.dataType[j] === "continuous"){
                 this.numericColumns.push({"key": this.columnNames[j], "value": j})
             }
@@ -61,7 +64,6 @@ export class DATAHANDLER {
             }
         }
         let nt = this.table
-        console.log("#complete_length"+nt.length)
         //sample data
         if(this.table.length>5000){
             while(nt.length>5000){
@@ -72,13 +74,6 @@ export class DATAHANDLER {
 
         this.table = nt
 
-        console.log("#########==========<><><><><><><><>==========#########")
-        //console.log(data)
-        console.log(this.numericColumns)
-        console.log(this.columnNames)
-        console.log(this.dataType)
-        console.log(this.table)
-        console.log("#########==========<><><><><><><><>==========#########")
 
     }
 

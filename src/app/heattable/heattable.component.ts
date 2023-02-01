@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GlobalVars} from "../global-vars";
 import {StatisticsCore} from "../statistics-core";
 import {sign} from "chart.js/types/helpers";
@@ -13,6 +13,9 @@ export class HeattableComponent implements OnInit {
   table: any[][] = [[]];
   labels: any[]= [];
   sel_lables: any[] = [];
+
+  @Input()
+  correction_stragegy: any;
 
   constructor() {
     this.labels = GlobalVars.datahandler.numericColumns
@@ -30,7 +33,7 @@ export class HeattableComponent implements OnInit {
       return (new Set(arr)).size === 1;
     }
     let sc = new StatisticsCore()
-    sc.setCorrection("Bonfi", this.labels.length)
+    sc.setCorrection(this.correction_stragegy, this.labels.length)
 
     let x :any[] = []
     let y :any[] = []

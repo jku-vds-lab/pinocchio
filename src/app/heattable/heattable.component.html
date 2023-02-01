@@ -1,4 +1,6 @@
 <div class="conti">
+    <h1>See a cross data-frame regression significance levels here: </h1>
+    <p>These signifcane levels may be already corrected. You have selected: {{correction_stragegy}}</p>
     <table id="inspect_table" class="table table-striped">
         <tr *ngFor="let rw of table; index as i">
             <td *ngFor="let elem of rw; index as i" class="cl-{{elem.sign}}">{{elem.outwrite}}</td>

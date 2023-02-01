@@ -16,8 +16,9 @@ export class StatisticsCore {
     p: number | { p: any; p_uncorrected: any } | boolean = 0.0;
     compare: number = 0;
     signv: number = 95;
-    correction: string = "None";
+    correction: string = "No correction";
     corrig: any;
+    private nr: number = 0;
 
     inputData(x: [], y:[]){
 
@@ -65,12 +66,16 @@ export class StatisticsCore {
         console.log(this.correction, this.corrig)
         var { jStat } = require('jstat')
 
-        if(this.correction=="None"){
+        if(this.correction=="No correction"){
             return 0+jStat.ttest(this.t, this.x.length, 2);
             //return {p: jStat.ttest(this.t, this.x.length, 2), p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
         }
-        else if(this.correction=="Bonfi"){
-            return jStat.ttest(this.t, this.x.length, 2) * this.corrig
+        else if(this.correction=="Bonferroni correction"){
+            return 0+jStat.ttest(this.t, this.x.length, 2) * this.corrig
+            //return {p: jStat.ttest(this.t, this.x.length, 2)*this.corrig, p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
+
+        } else if(this.correction=="Bonferroni Step-down correction"){
+            return 0+jStat.ttest(this.t, this.x.length, 2) * (this.corrig-this.nr)
             //return {p: jStat.ttest(this.t, this.x.length, 2)*this.corrig, p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
 
         }
@@ -149,8 +154,9 @@ export class StatisticsCore {
         return avg/this.data.length
     }
 
-    setCorrection(corr: string, labels: any) {
+    setCorrection(corr: string, labels: any, nr:number=0) {
         this.correction = corr
         this.corrig = labels
+        this.nr = nr
     }
 }
