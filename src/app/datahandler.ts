@@ -28,19 +28,18 @@ export class DATAHANDLER {
 
         //now we want to check the datatypes, read the data and so on
         for(let j =0; j< all_rows[1].split(delimiter).length; j++){
-            console.log("#",this.columnNames[j], all_rows[1][j], this.getType(all_rows[0][j]))
-            console.log("#-",this.dataType.push(this.getType(all_rows[0].split(delimiter)[j])))
-            this.dataType.push(this.getType(all_rows[0].split(delimiter)[j]));
+            this.dataType.push(this.getType(all_rows[1].split(delimiter)[j]));
         }
-
 
         for(let i = 0; i < all_rows.length;i++){
             let some_row = all_rows[i].split(delimiter)
+
             this.table.push([])
+
             for(let j=0; j<some_row.length; j++){
 
-                if(this.getType(some_row[j]) != this.dataType[j]){
-                    this.dataType[j] = 'categorical'
+                if(this.getType(some_row[j]) === "continuous" && this.dataType[j]!== "continuous"){
+                    alert("Thats a problem    row="+ i +" col="+j + "     " + some_row[j]+" "+this.dataType[j]+" "+this.getType(some_row[j]))
                 }
 
                 if(this.getType(some_row[j]) === "continuous"){
@@ -51,6 +50,7 @@ export class DATAHANDLER {
                 }
             }
         }
+        console.log(this.table)
 
 
         for(let j=0; j<this.columnNames.length;j++){
@@ -81,7 +81,7 @@ export class DATAHANDLER {
         if (value == null) {
             return 'null';
         }
-        if (typeof value == 'number' || isNumber(value)) {
+        if (isNumber(value)) {
             return 'continuous';
         }
         // @ts-ignore

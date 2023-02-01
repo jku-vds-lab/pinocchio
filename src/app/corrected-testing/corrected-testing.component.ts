@@ -11,15 +11,14 @@ export class CorrectedTestingComponent implements OnInit {
     public selectedOption: string | undefined = "No correction";
 
   constructor() { }
-  @ViewChild(HeattableComponent, { static: false }) childC: HeattableComponent | undefined;
+  @ViewChild(HeattableComponent, { static: true }) childC: HeattableComponent | undefined;
 
   ngOnInit(): void {
   }
 
   onChange(){
     // @ts-ignore
-    this.childC?.prepare();
-    alert("value")
+    this.childC?.update();
   }
 
 }

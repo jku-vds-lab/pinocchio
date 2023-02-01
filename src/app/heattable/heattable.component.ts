@@ -27,13 +27,22 @@ export class HeattableComponent implements OnInit {
     this.prepare()
 
   }
+  update(){
+    console.log("loading")
+    this.table=[];
+    this.ngOnInit();
+    this.table=[];
+    this.ngOnInit();
+  }
   getval(column_idx: number, row_idx: number){
 
+    //console.log(GlobalVars.datahandler)
     let checkForOne = function(arr: Iterable<unknown> | null | undefined){
       return (new Set(arr)).size === 1;
     }
     let sc = new StatisticsCore()
     sc.setCorrection(this.correction_stragegy, this.labels.length)
+    //console.log("nr of checks" + this.labels.length);
 
     let x :any[] = []
     let y :any[] = []
@@ -42,23 +51,24 @@ export class HeattableComponent implements OnInit {
       x.push(GlobalVars.datahandler.table[r][column_idx])
       y.push(GlobalVars.datahandler.table[r][row_idx])
     }
-
+/*
     if(checkForOne(x)){
-      return {t: 0, sigv:0, p: 0
+      return {t: 0, sigv:0, p: 100
       };
     }
     if(checkForOne(y)){
-      return {t: 0, sigv:0, p: 0
+      return {t: 0, sigv:0, p: 100
       };
-    }
+    }*/
     // @ts-ignore
     sc.inputData(x, y)
     sc.calculateRegression()
-    return {t: sc.t, sigv: sc.compare, p: sc.p
+    return {t: sc.t, sigv: sc.compare, p: sc.p_val()
     };
   }
 
   prepare(){
+    let mark = false;
     for(let row=0;row<this.labels.length+1;row++){
       this.table.push([]);
       for(let col=0;col<this.labels.length+1;col++){
@@ -75,25 +85,52 @@ export class HeattableComponent implements OnInit {
         }
         else{
 
-
-
           let sig = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).sigv
           let t = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).t
           // @ts-ignore
           let p = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).p
 
+          if(this.correction_stragegy=="Bonferroni correction"){
+            p = p*this.labels.length*this.labels.length;
 
-          let txt = t.toFixed(2) + " > " + sig.toFixed(2)
+          }
+          else if(this.correction_stragegy=="Bonferroni Step-down correction"){
+            mark = true
+          }
           if (typeof p === "number") {
             this.table[row].push({
               outwrite: p.toFixed(2) + "<" + 0.05,
-              sign: p < 0.05
+              sign: p < 0.05,
+              p: p
             })
           }
         }
+      }
+    }
 
+    let all;
+    if (mark) {
+      all = []
+      for (let row = 1; row < this.labels.length + 1; row++) {
+        for (let col = 1; col < this.labels.length + 1; col++) {
+          // @ts-ignore
+          all.push({p: this.table[row][col].p, r: row, c: col})
+        }
+      }
+
+      all.sort((a, b) => parseFloat(a.p) - parseFloat(b.p));
+
+      let miter = 1;
+      for(let max=all.length-1; max>0;max--){
+        let p = all[max].p
+        p = p*((this.labels.length*this.labels.length)-miter);
+        //console.log("new and old p "+p+" - "+all[max].p)
+
+        this.table[all[max].r][all[max].c].outwrite = p.toFixed(2) + "<" + 0.05
+        this.table[all[max].r][all[max].c].sign = p < 0.05
 
       }
     }
+
   }
 }

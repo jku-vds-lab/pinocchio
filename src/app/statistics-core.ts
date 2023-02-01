@@ -2,6 +2,7 @@ import {min} from "rxjs";
 
 
 export class StatisticsCore {
+    public debug_marker = false;
     private data: any[] = [];
     R2: number = 0;
     R2_optimized: number = 0.0;
@@ -60,25 +61,16 @@ export class StatisticsCore {
 
     }
     p_val(){
+        var { jStat } = require('jstat')
+
         if(!isFinite(this.t)){
             return 0;
         }
-        console.log(this.correction, this.corrig)
-        var { jStat } = require('jstat')
 
-        if(this.correction=="No correction"){
-            return 0+jStat.ttest(this.t, this.x.length, 2);
-            //return {p: jStat.ttest(this.t, this.x.length, 2), p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
-        }
-        else if(this.correction=="Bonferroni correction"){
-            return 0+jStat.ttest(this.t, this.x.length, 2) * this.corrig
-            //return {p: jStat.ttest(this.t, this.x.length, 2)*this.corrig, p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
+        //console.log(this.correction, this.corrig)
 
-        } else if(this.correction=="Bonferroni Step-down correction"){
-            return 0+jStat.ttest(this.t, this.x.length, 2) * (this.corrig-this.nr)
-            //return {p: jStat.ttest(this.t, this.x.length, 2)*this.corrig, p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
+        return 0+jStat.ttest(this.t, this.x.length, 2);
 
-        }
     }
     f(x:number){
         return this.beta0 + this.beta1*x
