@@ -13,11 +13,11 @@ export class StatisticsCore {
     s_e_beta = 0.0;
     s_error: number = 0.0;
     t: number = 0.0;
-    p: number = 0.0;
+    p: number | { p: any; p_uncorrected: any } | boolean = 0.0;
     compare: number = 0;
     signv: number = 95;
-    private correction: string | undefined = "None";
-    private corrig: any;
+    correction: string = "None";
+    corrig: any;
 
     inputData(x: [], y:[]){
 
@@ -62,16 +62,18 @@ export class StatisticsCore {
         if(!isFinite(this.t)){
             return 0;
         }
+        console.log(this.correction, this.corrig)
         var { jStat } = require('jstat')
 
         if(this.correction=="None"){
-            return jStat.ttest(this.t, this.x.length, 2)
+            return 0+jStat.ttest(this.t, this.x.length, 2);
+            //return {p: jStat.ttest(this.t, this.x.length, 2), p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
         }
         else if(this.correction=="Bonfi"){
-            return jStat.ttest(this.t, this.x.length, 2)*this.corrig
+            return jStat.ttest(this.t, this.x.length, 2) * this.corrig
+            //return {p: jStat.ttest(this.t, this.x.length, 2)*this.corrig, p_uncorr:jStat.ttest(this.t, this.x.length, 2)}
 
         }
-
     }
     f(x:number){
         return this.beta0 + this.beta1*x

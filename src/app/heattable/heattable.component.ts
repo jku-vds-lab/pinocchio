@@ -25,10 +25,12 @@ export class HeattableComponent implements OnInit {
 
   }
   getval(column_idx: number, row_idx: number){
+
     let checkForOne = function(arr: Iterable<unknown> | null | undefined){
       return (new Set(arr)).size === 1;
     }
     let sc = new StatisticsCore()
+    sc.setCorrection("Bonfi", this.labels.length)
 
     let x :any[] = []
     let y :any[] = []
@@ -49,7 +51,6 @@ export class HeattableComponent implements OnInit {
     // @ts-ignore
     sc.inputData(x, y)
     sc.calculateRegression()
-    sc.setCorrection("Bonfi", this.labels.length)
     return {t: sc.t, sigv: sc.compare, p: sc.p
     };
   }
@@ -75,11 +76,17 @@ export class HeattableComponent implements OnInit {
 
           let sig = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).sigv
           let t = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).t
+          // @ts-ignore
           let p = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).p
 
+
           let txt = t.toFixed(2) + " > " + sig.toFixed(2)
-          this.table[row].push({outwrite:p.toFixed(2) +"<"+0.05 ,
-            sign: p<0.05})
+          if (typeof p === "number") {
+            this.table[row].push({
+              outwrite: p.toFixed(2) + "<" + 0.05,
+              sign: p < 0.05
+            })
+          }
         }
 
 

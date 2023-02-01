@@ -108,7 +108,7 @@ export class ManualRegressionComponent implements OnInit {
       this.corr = sc.correlation
       this.s_err = sc.s_error
       this.t = sc.t
-      this.p = sc.p
+      //this.p = sc.p
       this.onUpdateChild();
       this.compare = sc.compare
     }
