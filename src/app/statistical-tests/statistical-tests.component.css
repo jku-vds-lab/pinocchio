@@ -10,7 +10,7 @@ main{
 }
 #sp_1{
     height: 500px;
-    width: auto;
+    width: auto !important;
 }
 aside{
     text-align: center;

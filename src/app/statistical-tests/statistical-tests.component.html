@@ -38,7 +38,7 @@
     </section>
     <section>
         <h2>Correlation and Causation</h2>
-        <p>The above image already implies what correlation is, a quick reminder what correlation is!</p>
+        <p>The above image already introduces the term correlation, lets now look what correlation is!</p>
         <p>Correlation is a statistical dependence i.e. you can infer something about datapoints y dependent on datapoint x</p>
         <p>Classical example: higher BMI (body mass index) correlates with higher incidence of certain diseases! <br> But however is this realy causal? Do just higher weight imply this diseases?</p>
 
@@ -54,7 +54,7 @@
             <img src="assets/causation_correlation.png">
         </div>
 
-        <p>by the way for your intrest these graphs are called DAGs - directed acyclic graphs and are often used for showing causal relationships</p>
+        <p>by the way such graphs are called DAGs - directed acyclic graphs and are often used for showing causal relationships</p>
 
     </section>
     <section>
@@ -63,28 +63,31 @@
         <div class="img_cont" id="sp3">
             <img id="sp_1" src="https://media.cheggcdn.com/media/ae5/ae5fb628-dbe6-4af5-a82f-8ab754d8befc/php9t3Ybz">
         </div>
+        <p>The idea of this little meme is that even though our reasonable reasoning says that this cat has caused this mess. In theory however any other thing could have caused that i.e. an Burglar, an other Cat, a Rat, an Earthquake whatever. </p>
+        <p>I wonder whether this cat can convince his owner that correlation is not causation. </p>
     </section>
     <section>
         <h2>A statistical application</h2>
 
         <p>However lets leave the question of correlation and causation as its root alone for now. Its a very important and difficult question in different sciences and subject to clever research designs which are most-likely even domain specific!</p>
         <p>Lets look on statistical tests and multiple testing. Inferential statistics tries to infer knowledge based on observations done on data samples.
-            The key idea is the assumption that if we draw a representative sample it will have overall the same statistic properties as the ground population. The key problem of course is randomness. If one would have some technique which answers how probable it is whether this result is by random chance or really true.
-        </p>
+            The key idea is the assumption that if we draw a representative sample it will have overall the same statistic properties as the ground population. The key problem of course is randomness. Sometimes the sample has not the same statistics and we often can not compare it because we can not observe the ground population (otherwise we would not have had to draw a sample).</p>
         <p>A very good example to understand  inferential statistics and statistical tests is a medical drug effect study.
-            You draw two samples which have the same properties as the ground population.
+            You draw <b>two samples</b> which have the same properties as the ground population.
+            <br><br>
+            <b>Both samples have the same (or insignificant different) summary statistics in all relevant features.</b> i.e. medical study both have 50/50 male/female, average age in one group = 45, average age in other group 46, and so on.
 
-            Now the drug is prescribed to the first group while some placebo is served to the second group.
-
-            Now one formulates two hypothesis:
+            <br>Now the drug is prescribed to the first group while some placebo is served to the second group.
+<br>
+            <br>Now one formulates two hypothesis:
 
             <br>
             H_0: here is no difference between the groups - the drug has no effect
             <br>
-            H_1: there is some difference between the groups - the drug causes more health, less pain whatsoever
+            H_1: there is some difference between the groups - the drug causes more health, less pain or whatever we want to compare (also think of side-effects like more weight after drug)
             <br>
 
-            In the end we want to reject the null-hypothesis i.e we want to be sure that some drug has the effect.
+            In the end we want to reject the null-hypothesis i.e we want to be sure that our wonder-drug has caused the effect.
 
             <br>
             Basically now we can compare for example the means (and other descriptive statistics like median, variance, mode, ...)
@@ -99,7 +102,9 @@
         <div class="img_cont">
             <img src="assets/Untitled2.gif">
         </div>
-        <p>Okay now lets look a bit closer, it seems that the drug has an effect the mean diverges after the treatment. Ok Null-Hypothesis rejected perfect drug will be produced and selled to all people around the world right? Hmm not quite right? For now dismiss that if there is some effect it is quite small but when thinking about it more closely it could be that the change in pain-level is just by chance. Just look at the picture below to have more time analysing it. You see everywhere there is some probabilities (for selection, for distributing to the different groups, how advanced the ilness already is, general health condistion, ...) involved. So maybe its just by chance as already said. And now comes our statistical testing. </p>
+        <p>Okay now lets look a bit closer, it seems that the drug has an effect the mean diverges after the treatment. Ok Null-Hypothesis rejected perfect drug will be produced and selled to all people around the world right? <br>
+            Hmm not quite right?
+            For now dismiss that if there is some effect it is quite small but when thinking about it more closely it could be that the change in pain-level is just by chance. Just look at the picture below to have more time analysing it. You see everywhere there is some probabilities (for selection, for distributing to the different groups, how advanced the illness already is, general health conditions, ...) involved. So maybe its just by chance as already said. And now comes our statistical testing. </p>
         <div class="img_cont">
             <img src="assets/medical.png">
         </div>
@@ -111,7 +116,7 @@
         <p>Basically we now that probabilities follow some distribution, we can assume for reasons based on probability theory that our values for an estimator (like mean, ...) is distributed via a normal distribution</p>
         <p>i.e our expected value which we got above is the best guess for the ground-truth-expected value. This value is distributed normally with some certain variance.</p>
 
-        <p>now we can build around our estimated value a confidence interval which just the interval between the true value has to lie with a specific probability.</p>
+        <p>Now we can build around our estimated value a confidence interval which just the interval between the true value has to lie with a specific probability.</p>
 
         <p>Its more or less a common-ground in science to assume that everything between 95% is significant</p>
 
@@ -131,6 +136,7 @@
     </section>
     <section>
         <h2>Take a quick look on one testing-method "students t test"</h2>
+        <p>Basically this kind of test is exactly the situation above but we do not use a normal distribution but a t-distribution. A t-distribution just accounts for the fact that our variables (variance and mean) are already sampled. </p>
         <p>
             If the p-value that corresponds to t is less than some threshold (e.g. α = .05) then we reject the null hypothesis and conclude that there is a statistically significant relationship between the predictor variable and the response variable.
 
@@ -151,6 +157,7 @@
     <section>
         <h2>A little experiment</h2>
         <p>Now conduct some experiment! Basically we copy the graph from above, dark blue is our control group while cyan is our treatment. Now we generate with the parameters of our cyan curve more curves but the new mean values are also distributed normaly with N(4, 0.01) so now we get different curves. </p>
+        <p>Why is this now relevant? Basically since we always have some probabilities involved it can happen to obtain results which do not really correspond to the ground truth.</p>
         <p>And normally you should see in the green coloured curves that they are still significantly different but suddenly there are also in a more red-brownish colors they are suddenly not any more significantly different. </p>
         <p><small><u>Disclaimer: the below graph is generated by random i.e the result depends on the random numbers generated and can be different each time.</u></small></p>
         <app-some-chart></app-some-chart>
@@ -159,7 +166,7 @@
     <section>
         <h2>Overview of multiple testing</h2>
 
-        <p>Multiple testing is for example important in natural sciences i.e. when considering DNA-Research (<a href="https://en.wikipedia.org/wiki/Microarray">microarray-analysis</a>)</p>
+        <p>Multiple testing is for example important in natural sciences i.e. when considering DNA-Research (<a href="https://en.wikipedia.org/wiki/Microarray">microarray-analysis</a>) Because we have just to analyze so many experiments (each for each gene)..</p>
 
         <p>So again what is now the problem: we find significant relationships when doing t-tests but in reality they are not there. The problem increases with the number of experiments/estimations.</p>
 
@@ -170,7 +177,7 @@
             <img src="assets/experi2.gif">
         </div>
 
-        <p>Wanna try on some real data? On your own dataset? I have prepared some little prototype where you can play around and find significant data. <br> You can be sure that when having enough attributes you can find some significant relationship (on linear regression/OLS) which is complete non-sense </p>
+        <p>Wanna try on some real data? On your own dataset? I have prepared some little prototype where you can play around and find significant data. <br> You can be almost sure that when having enough attributes you can find some significant relationship (on linear regression/OLS) which is in fact when considering the truth complete non-sense </p>
         <a class="btn btn-primary" routerLink="/upload">Go to data upload</a><br>
         <a class="btn btn-primary" routerLink="/manual">Go directly to playaround</a><br>
         <a class="btn btn-primary" routerLink="/automatic">Go directly to automatic scan</a><br>
@@ -182,8 +189,8 @@
     <section>
         <h2>Strategy for Multiple Testing I</h2>
         <p>Actually the most safest strategy is simple. Whenever doing data-driven research one should first have some theory.</p>
-        <p>So always think first, what could be, what you are searching for, what does domain-specific theory say? Then make confirmatory data-analytics and only do analytics which is "meaningful". Of course this is rather limited. Often we do not have a theory and past research or the data is too abstract to use common-sensen. A very important field is exploratory data-analytics which just means searching for data and then try to explain the results. This exploratory data analytics is not possible with this rather simple approach.</p>
-
+        <p>So always think first, what I am searching for, what do I expect. What does domain-specific theory say? Then make confirmatory data-analytics and only do analytics which is "meaningful". Of course this is rather limited. Often we do not have a theory and past research or the data is too abstract to use common-sensen. A very important field is exploratory data-analytics which just means searching for data and then try to explain the results. This exploratory data analytics is not possible with this rather simple approach.</p>
+<p>Furthermore I want to draw attention how important exploratory data analytics is. Normally our only chance to get new knowledge is to just see what happens. Especially in natural sciences as in the above mentioned micro-array analysis. </p>
         <div class="img_cont">
             <img src="https://datos.gob.es/sites/default/files/u322/grafico.jpg">
         </div>
