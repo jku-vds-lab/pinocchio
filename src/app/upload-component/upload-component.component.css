@@ -1,0 +1,23 @@
+section{
+    height: 100%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.desc_for_upload{
+    padding: 2rem;
+}
+
+td{
+    border-right: 1px dotted black;
+    border-bottom: 1px dotted black;
+}
+tr :first-child{
+    border-left: 1px dotted black;
+}
+table :first-child{
+    border-top: 1px dotted black;
+}
+#le_tablaux{
+    overflow: scroll;
+}

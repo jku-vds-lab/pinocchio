@@ -21,4 +21,5 @@ export class GlobalVars {
   public static csvobj: CSV;
   public static datahandler: DATAHANDLER;
     static line: any[] = [{x: 50, y:50}];
+    static status: boolean = false;
 }

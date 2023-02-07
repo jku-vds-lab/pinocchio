@@ -25,6 +25,7 @@ import { PlotterComponent } from './plotter/plotter.component';
 import { SomeChartComponent } from './some-chart/some-chart.component';
 import { CorrectedTestingComponent } from './corrected-testing/corrected-testing.component';
 import { HeattableComponent } from './heattable/heattable.component';
+import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
     { path: 'tests', component: StatisticalTestsComponent },
     { path: 'automatic', component: InspectorComponent },
     { path: 'correction-test', component: CorrectedTestingComponent },
+    { path: 'waiting_room', component: WaitingRoomComponent },
 
 
 
@@ -60,11 +62,12 @@ const routes: Routes = [
     PlotterComponent,
     SomeChartComponent,
     CorrectedTestingComponent,
-    HeattableComponent],
+    HeattableComponent,
+    WaitingRoomComponent],
     imports: [
         BrowserModule,
         FontAwesomeModule,
-        RouterModule.forRoot(routes, {enableTracing: true}),
+        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
         PlotlyModule,
         FormsModule,
         HttpClientModule,

@@ -1,3 +1,4 @@
+import {GlobalVars} from "./global-vars";
 
 
 function isDate(value: any) {
@@ -65,14 +66,16 @@ export class DATAHANDLER {
         }
         let nt = this.table
         //sample data
-        if(this.table.length>5000){
-            while(nt.length>5000){
+        if(this.table.length>1000){
+            while(nt.length>1000){
                 let idx =  Math.floor(Math.random() * nt.length )
                 nt.splice(idx, 1)
             }
         }
 
         this.table = nt
+
+        GlobalVars.status = true;
 
 
     }

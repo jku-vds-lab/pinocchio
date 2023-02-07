@@ -21,6 +21,7 @@ export class AppComponent {
             //GlobalVars.csvobj = csvobj
             GlobalVars.datahandler = new DATAHANDLER()
             GlobalVars.datahandler.loadCSV(this.posts)
+
         },
         (error: any) => { console.log(error); });
 

@@ -99,7 +99,7 @@ export class HeattableComponent implements OnInit {
           }
           if (typeof p === "number") {
             this.table[row].push({
-              outwrite: p.toFixed(2) + "<" + 0.05,
+              outwrite: '☑️',// p.toFixed(2) + "<" + 0.05,
               sign: p < 0.05,
               p: p
             })
@@ -126,7 +126,7 @@ export class HeattableComponent implements OnInit {
         p = p*((this.labels.length*this.labels.length)-miter);
         //console.log("new and old p "+p+" - "+all[max].p)
 
-        this.table[all[max].r][all[max].c].outwrite = p.toFixed(2) + "<" + 0.05
+        this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
         this.table[all[max].r][all[max].c].sign = p < 0.05
 
       }

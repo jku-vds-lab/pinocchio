@@ -1,7 +1,48 @@
-<h1>
-  Choose how to upload data:
-</h1>
-<p>Please select an CSV file: </p>
-<input type='file' (change)="fileChanged($event)">
-<p>Input your CSV as a txt</p>
-<p></p>
+<section>
+
+  <h1>
+    Choose how to upload data:
+  </h1>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Delimiter:</p>
+        <input class="form-control" placeholder="delimiter" value=",">
+        <p>Choose your file:</p>
+
+        <input type='file' (change)="fileChanged($event)">
+
+
+        <a routerLink="/upload" class="btn btn-primary">Apply</a>
+
+      </div>
+      <div class="col-sm-6 card desc_for_upload" id="desc_for_upload">
+        Here you can upload your custom datafile as CSV. We try to bring it into the right shape to be used for the other functionalities.
+        The file must be structured in the following way:
+        <ul>
+          <li>first-row: feature names seperated by seperator</li>
+          <li>second and following-rows: feature values seperated by seperator</li>
+          <li>id columns are not allowed</li>
+          <li>if there are to many rows there is some sampling technique used</li>
+        </ul></div>
+    </div>
+    <hr>
+    Find some preview
+    <div class="row">
+      <div class="col-sm-9" id="le_tablaux">
+        <table id="inspect_table" class="table table-striped">
+          <tr *ngFor="let rw of table; index as i">
+            <td *ngFor="let elem of rw; index as i">{{elem}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="col-sm-3 card desc_for_upload">
+        <p>Number of rows / samples: <u>{{this.leng}}</u></p>
+        <p>Number of columns / features: <u>{{this.featu}}</u> </p>
+      </div>
+
+    </div>
+  </div>
+</section>
