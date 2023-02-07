@@ -13,3 +13,10 @@ td:last-child{
 main{
     padding: 2rem;
 }
+
+#xtrue{
+    display: block;
+}
+#xfalse{
+    display: none;
+}

@@ -39,6 +39,7 @@ export class ManualRegressionComponent implements OnInit {
   chi_significant: number=0.0;
   
   cat_sel = [0, 1];
+  open: any = true;
 
 
 
@@ -49,18 +50,43 @@ export class ManualRegressionComponent implements OnInit {
     // @ts-ignore
     this.childC.update();
     console.log("update");
+
   }
   ngOnInit(): void {
     // @ts-ignore
     this.labels = GlobalVars.datahandler.numericColumns
     // @ts-ignore
     this.label_cat = GlobalVars.datahandler.categoricColumns
+
+
+    // @ts-ignore
+    this.sel[0] = this.labels[0].value
+    // @ts-ignore
+    this.sel[1] = this.labels[0].value
+
+    this.waiter();
+    // @ts-ignore
+
+  }
+  waiter(){
+    setTimeout(() => {
+      setTimeout(() => {
+        this.regressor();
+        this.open = false;
+      });
+    }, 500);
   }
   onSelected(event: any, number: number) {
-    let sc = new StatisticsCore()
+    this.open = true;
 
     this.sel[number] = event.target.value;
+    this.regressor();
+    this.open = false;
+  }
 
+  regressor(){
+
+    let sc = new StatisticsCore()
 
     this.signiv = sc.signv
 
@@ -112,10 +138,6 @@ export class ManualRegressionComponent implements OnInit {
       this.onUpdateChild();
       this.compare = sc.compare
     }
-
-
-
-
   }
 
 
