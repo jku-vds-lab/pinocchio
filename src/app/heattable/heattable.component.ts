@@ -16,6 +16,7 @@ export class HeattableComponent implements OnInit {
 
   @Input()
   correction_stragegy: any;
+    stati: any = true;
 
   constructor() {
     this.labels = GlobalVars.datahandler.numericColumns
@@ -25,14 +26,16 @@ export class HeattableComponent implements OnInit {
   ngOnInit(): void {
     //prepare table
     this.prepare()
-
+    this.stati = false;
   }
   update(){
+    this.stati = true;
     console.log("loading")
     this.table=[];
     this.ngOnInit();
     this.table=[];
     this.ngOnInit();
+    this.stati = false;
   }
   getval(column_idx: number, row_idx: number){
 

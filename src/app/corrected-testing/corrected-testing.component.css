@@ -1,3 +1,9 @@
 main{
     padding: 3rem;
 }
+#spinner_waiter_true{
+    visibility: visible;
+}
+#spinner_waiter_false{
+    visibility: hidden;
+}

@@ -12,13 +12,16 @@ export class CorrectedTestingComponent implements OnInit {
 
   constructor() { }
   @ViewChild(HeattableComponent, { static: true }) childC: HeattableComponent | undefined;
+    stati: any;
 
   ngOnInit(): void {
   }
 
   onChange(){
     // @ts-ignore
+    this.stati = true;
     this.childC?.update();
+    this.stati = false;
   }
 
 }

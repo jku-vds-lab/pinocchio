@@ -22,3 +22,9 @@ table{
     width: 100%;
     overflow: scroll;
 }
+#spinner_waiter_true{
+    visibility: visible;
+}
+#spinner_waiter_false{
+    visibility: hidden;
+}

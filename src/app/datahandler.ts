@@ -40,7 +40,9 @@ export class DATAHANDLER {
             for(let j=0; j<some_row.length; j++){
 
                 if(this.getType(some_row[j]) === "continuous" && this.dataType[j]!== "continuous"){
-                    alert("Thats a problem    row="+ i +" col="+j + "     " + some_row[j]+" "+this.dataType[j]+" "+this.getType(some_row[j]))
+                    //alert("Thats a problem    row="+ i +" col="+j + "     " + some_row[j]+" "+this.dataType[j]+" "+this.getType(some_row[j]))
+                    //alert("We can not parse this file hence we will restart the application! Please select an other file");
+                    window.location.reload();
                 }
 
                 if(this.getType(some_row[j]) === "continuous"){
@@ -66,8 +68,8 @@ export class DATAHANDLER {
         }
         let nt = this.table
         //sample data
-        if(this.table.length>1000){
-            while(nt.length>1000){
+        if(this.table.length>300){
+            while(nt.length>250){
                 let idx =  Math.floor(Math.random() * nt.length )
                 nt.splice(idx, 1)
             }

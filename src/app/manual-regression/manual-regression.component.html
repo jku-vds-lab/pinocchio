@@ -36,10 +36,10 @@
 
     </div>
     <div class="col-sm-6">
-      <p><strong>f(x)={{this.beta0.toFixed(3)}}+{{this.beta1.toFixed(3)}}*x</strong></p>
+      <p><strong>f(x)={{this.beta0.toFixed(3)}}+({{this.beta1.toFixed(3)}})*x</strong></p>
       <p><br></p>
-<p></p>g
-      <p>SIGNIFICANCE on a 95 % level <strong> {{this.t>this.compare}} </strong></p>
+      <p></p>
+      <p class="if{{this.t>this.compare}}">SIGNIFICANCE on a 95 % level <strong > {{this.t>this.compare}} </strong></p>
       <p></p>
       <br>
       <table>
