@@ -8,8 +8,12 @@ section{
 div{
     margin-left: 25%;
     margin-right: 25%;
+
 }
 section>div>div{
     font-size: 10rem;
+}
+section>div{
+    text-align: center;
 }
 

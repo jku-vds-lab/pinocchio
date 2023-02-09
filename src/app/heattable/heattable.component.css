@@ -7,6 +7,9 @@ tr{
 }
 td{
     border-right: 1px solid black;
+    max-width: 7rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .cl-true{
     background-color: rgba(0, 255, 0, 0.5);

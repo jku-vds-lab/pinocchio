@@ -19,9 +19,7 @@ export class CorrectedTestingComponent implements OnInit {
 
   onChange(){
     // @ts-ignore
-    this.stati = true;
     this.childC?.update();
-    this.stati = false;
   }
 
 }

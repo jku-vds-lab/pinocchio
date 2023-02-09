@@ -13,6 +13,7 @@ export class AppComponent {
   private posts: any;
   constructor(private httpService: HttpService) { }
   ngOnInit() {
+
     this.httpService.getPosts().subscribe(
         (response: any) => {
           //console.log(response);

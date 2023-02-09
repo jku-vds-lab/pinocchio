@@ -6,9 +6,12 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 
+    <p>Found {{signis}} significant results. {{signis}}/{{signis_all}}</p>
+
+
     <table id="inspect_table" class="table table-striped">
         <tr *ngFor="let rw of table; index as i">
-            <td *ngFor="let elem of rw; index as i" class="cl-{{elem.sign}}">{{elem.outwrite}}</td>
+            <td *ngFor="let elem of rw; index as i" class="cl-{{elem.sign}}" title="{{elem.outwrite}}">{{elem.outwrite}}</td>
         </tr>
 
     </table>

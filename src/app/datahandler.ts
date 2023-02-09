@@ -20,6 +20,7 @@ export class DATAHANDLER {
         this.table = []
         this.dataType = []
         this.numericColumns = []
+        this.categoricColumns = []
         //split data in rows
         let all_rows = data.split("\n")
 

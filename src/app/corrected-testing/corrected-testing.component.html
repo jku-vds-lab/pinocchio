@@ -1,14 +1,11 @@
 <p>As your already saw at the previous page you can find quite some relationships!</p>
 
 <main>
-    <select class="form-control" [(ngModel)]="selectedOption" (blur)="onChange()" (mousemove)="onChange()">
+    <select class="form-control" [(ngModel)]="selectedOption" (ngModelChange)="onChange()" (mouseleave)="onChange()" (mouseout)="onChange()" (click)="onChange()" (keypress)="onChange()">
         <option value="No correction" selected>without correction</option>
         <option value="Bonferroni correction">Bonferroni correction</option>
         <option value="Bonferroni Step-down correction">Bonferroni Step-down (Holm) correction</option>
     </select>
-    <div class="spinner-border text-dark" role="status" id="spinner_waiter_{{stati}}">
-        <span class="visually-hidden">Loading...</span>
-    </div>
     <app-heattable [correction_stragegy]="selectedOption"></app-heattable>
 </main>
 

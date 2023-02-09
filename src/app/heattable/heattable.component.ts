@@ -17,6 +17,8 @@ export class HeattableComponent implements OnInit {
   @Input()
   correction_stragegy: any;
     stati: any = true;
+  signis: any = 0;
+  signis_all: any = 0;
 
   constructor() {
     this.labels = GlobalVars.datahandler.numericColumns
@@ -31,8 +33,6 @@ export class HeattableComponent implements OnInit {
   update(){
     this.stati = true;
     console.log("loading")
-    this.table=[];
-    this.ngOnInit();
     this.table=[];
     this.ngOnInit();
     this.stati = false;
@@ -54,7 +54,7 @@ export class HeattableComponent implements OnInit {
       x.push(GlobalVars.datahandler.table[r][column_idx])
       y.push(GlobalVars.datahandler.table[r][row_idx])
     }
-/*
+
     if(checkForOne(x)){
       return {t: 0, sigv:0, p: 100
       };
@@ -62,7 +62,9 @@ export class HeattableComponent implements OnInit {
     if(checkForOne(y)){
       return {t: 0, sigv:0, p: 100
       };
-    }*/
+    }
+
+
     // @ts-ignore
     sc.inputData(x, y)
     sc.calculateRegression()
@@ -71,6 +73,8 @@ export class HeattableComponent implements OnInit {
   }
 
   prepare(){
+    this.signis_all = 0;
+    this.signis = 0;
     let mark = false;
     for(let row=0;row<this.labels.length+1;row++){
       this.table.push([]);
@@ -87,7 +91,7 @@ export class HeattableComponent implements OnInit {
 
         }
         else{
-
+          this.signis_all++;
           let sig = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).sigv
           let t = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).t
           // @ts-ignore
@@ -101,6 +105,9 @@ export class HeattableComponent implements OnInit {
             mark = true
           }
           if (typeof p === "number") {
+            if(p < 0.05){
+              this.signis++;
+            }
             this.table[row].push({
               outwrite: '☑️',// p.toFixed(2) + "<" + 0.05,
               sign: p < 0.05,
@@ -113,6 +120,7 @@ export class HeattableComponent implements OnInit {
 
     let all;
     if (mark) {
+      this.signis =0;
       all = []
       for (let row = 1; row < this.labels.length + 1; row++) {
         for (let col = 1; col < this.labels.length + 1; col++) {
@@ -131,6 +139,9 @@ export class HeattableComponent implements OnInit {
 
         this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
         this.table[all[max].r][all[max].c].sign = p < 0.05
+        if(p < 0.05){
+          this.signis++;
+        }
 
       }
     }
