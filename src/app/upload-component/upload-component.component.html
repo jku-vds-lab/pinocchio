@@ -12,6 +12,8 @@
         <p>Choose your file:</p>
 
         <input type='file' (change)="fileChanged($event)">
+
+        <button class="btn btn-primary" (click)="convert()">Convert Categorical to Numerical</button>
       </div>
       <div class="col-sm-6 card desc_for_upload" id="desc_for_upload">
         Here you can upload your custom datafile as CSV. We try to bring it into the right shape to be used for the other functionalities.
