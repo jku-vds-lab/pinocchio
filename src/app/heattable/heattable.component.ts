@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {GlobalVars} from "../global-vars";
 import {StatisticsCore} from "../statistics-core";
 import {sign} from "chart.js/types/helpers";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-heattable',
@@ -20,13 +21,17 @@ export class HeattableComponent implements OnInit {
   signis: any = 0;
   signis_all: any = 0;
 
-  constructor() {
-    this.labels = GlobalVars.datahandler.numericColumns
-    this.sel_lables = this.labels
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
+    if(!GlobalVars.prev_data_loaded){
+      this.router.navigateByUrl('/')
+    }
     //prepare table
+    this.labels = GlobalVars.datahandler.numericColumns
+    this.sel_lables = this.labels
     this.prepare()
     this.stati = false;
   }

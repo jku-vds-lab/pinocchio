@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ GlobalVars} from "../global-vars";
 import {Router, NavigationEnd,ActivatedRoute} from '@angular/router';
+import * as Console from "console";
 
 
 
@@ -14,17 +15,23 @@ export class UploadComponentComponent implements OnInit {
   file: any;
   str: string ="";
   arr: object | undefined;
-
   leng = 100;
   featu=10;
-  table: any = [GlobalVars.datahandler.columnNames, GlobalVars.datahandler.dataType]
-
+  prev: any = [[".", ".", "."], [".", ".", "."]];
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.leng = GlobalVars.datahandler.table.length
-    this.featu = GlobalVars.datahandler.table[0].length
-    this.table = [GlobalVars.datahandler.columnNames, GlobalVars.datahandler.dataType]
+    setTimeout(() => {
+      setTimeout(() => {
+        if(GlobalVars.prev_data_loaded){
+          this.init()
+        }
+        else{
+          this.ngOnInit();
+        }
+
+      });
+    }, 500);
   }
 
   fileChanged(e: Event) {
@@ -46,7 +53,7 @@ export class UploadComponentComponent implements OnInit {
 
     this.ngOnInit();
     // @ts-ignore
-    setTimeout(this.router.navigateByUrl('/waiting_room'), 1000)
+    setTimeout(this.router.navigateByUrl('/waiting_room'), 3000)
 
 
 
@@ -111,5 +118,14 @@ export class UploadComponentComponent implements OnInit {
 
 
 
+  }
+
+  private init() {
+    this.prev = [GlobalVars.datahandler.columnNames, GlobalVars.datahandler.dataType]
+    console.log(this.prev);
+    this.leng = GlobalVars.datahandler.table.length
+    this.featu = GlobalVars.datahandler.table[0].length
+    this.prev = [GlobalVars.datahandler.columnNames, GlobalVars.datahandler.dataType]
+    return true;
   }
 }

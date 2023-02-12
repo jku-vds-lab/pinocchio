@@ -15,6 +15,7 @@ export class CorrectedTestingComponent implements OnInit {
     stati: any;
 
   ngOnInit(): void {
+
   }
 
   onChange(){

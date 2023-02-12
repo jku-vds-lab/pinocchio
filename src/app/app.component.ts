@@ -13,7 +13,7 @@ export class AppComponent {
   private posts: any;
   constructor(private httpService: HttpService) { }
   ngOnInit() {
-
+    GlobalVars.prev_data_loaded = false;
     this.httpService.getPosts().subscribe(
         (response: any) => {
           //console.log(response);
@@ -22,9 +22,12 @@ export class AppComponent {
             //GlobalVars.csvobj = csvobj
             GlobalVars.datahandler = new DATAHANDLER()
             GlobalVars.datahandler.loadCSV(this.posts)
+            GlobalVars.prev_data_loaded = true;
+
 
         },
         (error: any) => { console.log(error); });
+
 
 
   }

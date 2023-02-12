@@ -22,4 +22,5 @@ export class GlobalVars {
   public static datahandler: DATAHANDLER;
     static line: any[] = [{x: 50, y:50}];
     static status: boolean = false;
+  static prev_data_loaded: boolean = false;
 }

@@ -5,6 +5,7 @@ import {SomePlotComponent} from "../some-plot/some-plot.component";
 import {PlotterComponent} from "../plotter/plotter.component";
 import {StatisticsCore} from "../statistics-core";
 import {CatTestCore} from "../cat-test-core";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 
@@ -23,7 +24,6 @@ export class ManualRegressionComponent implements OnInit {
   public k: any = 0;
   public d: any = 0;
   inputValue: any = "f";
-  @ViewChild(PlotterComponent, { static: false }) childC: PlotterComponent | undefined;
   r2o: number = 0;
    corr: number = 0;
    beta0: number = 0;
@@ -42,9 +42,12 @@ export class ManualRegressionComponent implements OnInit {
   open: any = true;
 
 
+  @ViewChild(PlotterComponent, { static: false }) childC: PlotterComponent | undefined;
 
-  constructor() {
-
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    if(!GlobalVars.prev_data_loaded){
+      this.router.navigateByUrl('/')
+    }
   }
   onUpdateChild() {
     // @ts-ignore
@@ -53,6 +56,9 @@ export class ManualRegressionComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    if(!GlobalVars.prev_data_loaded){
+      this.router.navigateByUrl('/')
+    }
     // @ts-ignore
     this.labels = GlobalVars.datahandler.numericColumns
     // @ts-ignore
