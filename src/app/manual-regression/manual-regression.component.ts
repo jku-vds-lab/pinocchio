@@ -59,11 +59,13 @@ export class ManualRegressionComponent implements OnInit {
     if(!GlobalVars.prev_data_loaded){
       this.router.navigateByUrl('/')
     }
+
     // @ts-ignore
     this.labels = GlobalVars.datahandler.numericColumns
     // @ts-ignore
     this.label_cat = GlobalVars.datahandler.categoricColumns
-
+    // @ts-ignore
+    alert(this.labels.length)
 
     // @ts-ignore
     this.sel[0] = this.labels[0].value
@@ -129,6 +131,7 @@ export class ManualRegressionComponent implements OnInit {
       this.compare = 0
     }
     else {
+      sc.manual = true;
       // @ts-ignore
       sc.inputData(x, y);
       sc.calculateRegression()

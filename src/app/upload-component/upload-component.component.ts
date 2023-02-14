@@ -70,9 +70,7 @@ export class UploadComponentComponent implements OnInit {
   }
 
   private convert_and_extend(value:number) {
-    /*console.log(GlobalVars.datahandler.table)
-    console.log(GlobalVars.datahandler.numericColumns)
-    console.log(GlobalVars.datahandler.columnNames)*/
+
 
     //get num of individual values
     let myset: string[] = [];
@@ -81,42 +79,67 @@ export class UploadComponentComponent implements OnInit {
       let tv = GlobalVars.datahandler.table[j][value]
       if(myset.indexOf(tv)<0){
         myset.push(tv)
-        GlobalVars.datahandler.columnNames.push(GlobalVars.datahandler.columnNames[value]+"#"+tv)
-        GlobalVars.datahandler.numericColumns.push({key: GlobalVars.datahandler.columnNames[value]+"#"+tv, value: j})
-        GlobalVars.datahandler.dataType.push("continuous")
+
       }
 
 
     }
-
+    console.log("length of individual values check")
     console.log(myset)
+    if(myset.length>=8 || myset.length<2){
+      console.log("Reject")
+      return 0;
+    }
+    else{
+      myset = []
+      let pusher=1;
+      for(let j=0;j<GlobalVars.datahandler.table.length;j++){
 
-
-    //generate for each a column.
-
-
-
-    //iterate over rows
-    //go to column value
-    //copy
-    //push one additional column with our value
-
-    for(let i=0;i<GlobalVars.datahandler.table.length;i++){
-      for(let j=0;j<myset.length;j++){
-        if(myset[j] == GlobalVars.datahandler.table[i][value]){
-          GlobalVars.datahandler.table[i].push(1)
-        }
-        else {
-          GlobalVars.datahandler.table[i].push(0)
-
+        let tv = GlobalVars.datahandler.table[j][value]
+        if(myset.indexOf(tv)<0){
+          myset.push(tv)
+          GlobalVars.datahandler.columnNames.push(GlobalVars.datahandler.columnNames[value]+"#"+tv)
+          GlobalVars.datahandler.numericColumns.push({key: GlobalVars.datahandler.columnNames[value]+"#"+tv, value: GlobalVars.datahandler.columnNames.length-1})
+          GlobalVars.datahandler.dataType.push("continuous")
+          pusher++;
         }
 
       }
+
+
+      /*console.log(GlobalVars.datahandler.table)
+      console.log(GlobalVars.datahandler.numericColumns)
+      console.log(GlobalVars.datahandler.columnNames)*/
+
+
+      //generate for each a column.
+
+
+
+      //iterate over rows
+      //go to column value
+      //copy
+      //push one additional column with our value
+
+      for(let i=0;i<GlobalVars.datahandler.table.length;i++){
+        for(let j=0;j<myset.length;j++){
+          if(myset[j] == GlobalVars.datahandler.table[i][value]){
+            GlobalVars.datahandler.table[i].push(2)
+          }
+          else {
+            GlobalVars.datahandler.table[i].push(1)
+
+          }
+
+        }
+      }
     }
 
-    console.log(GlobalVars.datahandler.numericColumns)
+    console.log(GlobalVars.datahandler.table)
 
 
+
+    return 1;
 
   }
 

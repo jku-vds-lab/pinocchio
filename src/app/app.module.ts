@@ -26,6 +26,7 @@ import { SomeChartComponent } from './some-chart/some-chart.component';
 import { CorrectedTestingComponent } from './corrected-testing/corrected-testing.component';
 import { HeattableComponent } from './heattable/heattable.component';
 import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
+import { ViewDataComponent } from './view-data/view-data.component';
 
 
 
@@ -39,6 +40,8 @@ const routes: Routes = [
     { path: 'automatic', component: InspectorComponent },
     { path: 'correction-test', component: CorrectedTestingComponent },
     { path: 'waiting_room', component: WaitingRoomComponent },
+  { path: 'view_data', component: ViewDataComponent },
+
 
 
 
@@ -63,7 +66,8 @@ const routes: Routes = [
     SomeChartComponent,
     CorrectedTestingComponent,
     HeattableComponent,
-    WaitingRoomComponent],
+    WaitingRoomComponent,
+    ViewDataComponent],
     imports: [
         BrowserModule,
         FontAwesomeModule,

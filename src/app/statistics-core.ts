@@ -20,6 +20,7 @@ export class StatisticsCore {
     correction: string = "No correction";
     corrig: any;
     private nr: number = 0;
+    public manual: any = false;
 
     inputData(x: [], y:[]){
 
@@ -43,12 +44,27 @@ export class StatisticsCore {
 
         let stats = new Statistics(this.data, testVars);
         let regression = stats.linearRegression('x', 'y');
+        try {
+            this.R2 = regression.coefficientOfDetermination
+            this.R2_optimized = regression.coefficientOfDeterminationCorrected
+            this.beta0 = regression.regressionFirst.beta1
+            this.beta1 = regression.regressionFirst.beta2
+            this.correlation = regression.correlationCoefficient
+        } catch (error) {
+            console.log(error)
+            if(this.manual){
+                alert("Can not do regression, Choose different values") 
+            }
+            this.R2 = 0
+            this.R2_optimized = 0
+            this.beta0 = 0
+            this.beta1 = 0
+            this.correlation = 0
+            this.p = 0
+            this.t = 0
+        }
 
-        this.R2 = regression.coefficientOfDetermination
-        this.R2_optimized = regression.coefficientOfDeterminationCorrected
-        this.beta0 = regression.regressionFirst.beta1
-        this.beta1 = regression.regressionFirst.beta2
-        this.correlation = regression.correlationCoefficient
+
 
 
         //to calculate t-test we have to perform a number of steps
