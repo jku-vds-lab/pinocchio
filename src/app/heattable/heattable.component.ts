@@ -80,7 +80,7 @@ export class HeattableComponent implements OnInit {
   prepare(){
     this.signis_all = 0;
     this.signis = 0;
-    let mark = false;
+    let mark_step_down = false;
     for(let row=0;row<this.labels.length+1;row++){
       this.table.push([]);
       for(let col=0;col<this.labels.length+1;col++){
@@ -107,7 +107,7 @@ export class HeattableComponent implements OnInit {
 
           }
           else if(this.correction_stragegy=="Bonferroni Step-down correction"){
-            mark = true
+            mark_step_down = true
           }
           if (typeof p === "number") {
             if(p < 0.05){
@@ -124,7 +124,7 @@ export class HeattableComponent implements OnInit {
     }
 
     let all;
-    if (mark) {
+    if (mark_step_down) {
       this.signis =0;
       all = []
       for (let row = 1; row < this.labels.length + 1; row++) {
@@ -136,7 +136,7 @@ export class HeattableComponent implements OnInit {
 
       all.sort((a, b) => parseFloat(a.p) - parseFloat(b.p));
 
-      let miter = 1;
+      let miter = 0;
       for(let max=all.length-1; max>0;max--){
         let p = all[max].p
         p = p*((this.labels.length*this.labels.length)-miter);
@@ -147,6 +147,7 @@ export class HeattableComponent implements OnInit {
         if(p < 0.05){
           this.signis++;
         }
+        miter++;
 
       }
     }
