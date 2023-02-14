@@ -81,6 +81,7 @@ export class HeattableComponent implements OnInit {
     this.signis_all = 0;
     this.signis = 0;
     let mark_step_down = false;
+    let mark_benj_hochberg = false;
     for(let row=0;row<this.labels.length+1;row++){
       this.table.push([]);
       for(let col=0;col<this.labels.length+1;col++){
@@ -109,6 +110,9 @@ export class HeattableComponent implements OnInit {
           else if(this.correction_stragegy=="Bonferroni Step-down correction"){
             mark_step_down = true
           }
+          else if(this.correction_stragegy == "Benjamini and Hochberg False Discovery Rate"){
+            mark_benj_hochberg = true
+          }
           if (typeof p === "number") {
             if(p < 0.05){
               this.signis++;
@@ -124,6 +128,47 @@ export class HeattableComponent implements OnInit {
     }
 
     let all;
+
+    if(mark_benj_hochberg){
+      this.signis =0;
+      all = []
+      for (let row = 1; row < this.labels.length + 1; row++) {
+        for (let col = 1; col < this.labels.length + 1; col++) {
+          // @ts-ignore
+          all.push({p: this.table[row][col].p, r: row, c: col})
+        }
+      }
+      all.sort((a, b) => parseFloat(a.p) - parseFloat(b.p));
+      console.log("BENJI")
+      console.log(all);
+
+      //Now sorted from smallest to largest
+      // \item rank p-values from smallest to largest
+      //     \item the largest is not altered at all
+      //     \item the next one is multiplied by total tests divided by the rank (i.e rank from largest to smallest p-value)
+      // $$corrected.p.value = p.value * \frac{n}{n-rank} < 0.05$$
+      // \item this is repeated until all experiments are corrected
+      let miter = 1;
+      for(let max=all.length-1; max>0;max--){
+        let p = all[max].p
+        if(! (miter==1)){
+          p = p * ((this.labels.length*this.labels.length)/miter)
+
+        }
+
+        //console.log("new and old p "+p+" - "+all[max].p)
+
+        this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
+        this.table[all[max].r][all[max].c].sign = p < 0.05
+        if(p < 0.05){
+          this.signis++;
+        }
+        miter++;
+
+      }
+
+    }
+
     if (mark_step_down) {
       this.signis =0;
       all = []
