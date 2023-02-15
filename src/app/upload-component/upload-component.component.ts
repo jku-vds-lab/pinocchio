@@ -124,10 +124,10 @@ export class UploadComponentComponent implements OnInit {
       for(let i=0;i<GlobalVars.datahandler.table.length;i++){
         for(let j=0;j<myset.length;j++){
           if(myset[j] == GlobalVars.datahandler.table[i][value]){
-            GlobalVars.datahandler.table[i].push(2)
+            GlobalVars.datahandler.table[i].push(1)
           }
           else {
-            GlobalVars.datahandler.table[i].push(1)
+            GlobalVars.datahandler.table[i].push(0)
 
           }
 
