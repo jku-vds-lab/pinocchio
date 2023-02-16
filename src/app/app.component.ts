@@ -9,7 +9,7 @@ import {DATAHANDLER} from "./datahandler";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']})
 export class AppComponent {
-  title:string = 'Pinoccio';
+  title:string = 'Pinocchio';
   private posts: any;
   constructor(private httpService: HttpService) { }
   ngOnInit() {

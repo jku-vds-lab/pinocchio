@@ -30,7 +30,7 @@ export class WaitingRoomComponent implements OnInit {
           this.start()
         }
       });
-    }, 3000);
+    }, 1000);
 
 
   }

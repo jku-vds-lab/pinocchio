@@ -31,7 +31,7 @@ export class UploadComponentComponent implements OnInit {
         }
 
       });
-    }, 500);
+    }, 200);
   }
 
   fileChanged(e: Event) {
@@ -53,7 +53,7 @@ export class UploadComponentComponent implements OnInit {
 
     this.ngOnInit();
     // @ts-ignore
-    setTimeout(this.router.navigateByUrl('/waiting_room'), 3000)
+    setTimeout(this.router.navigateByUrl('/waiting_room'), 2000)
 
 
 
