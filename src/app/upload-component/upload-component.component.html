@@ -7,23 +7,39 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-        <p>Delimiter:</p>
-        <input class="form-control" placeholder="delimiter" value=",">
         <p>Choose your file:</p>
 
-        <input type='file' (change)="fileChanged($event)">
+        <select class="form-control" (change)="activateFile()" [(ngModel)]='option_selected' (ngModelChange)='onOptionsSelected($event)'>
+          <option value="/assets/datasets/default.csv">Made up Data-Set 🤷‍🤞️</option>
+          <option value="/assets/datasets/0HotelReservations.csv">Hotel Reservations 🛌</option>
+          <option value="/assets/datasets/test.csv">Bank Loan 🏦</option>
+          <option value="/assets/datasets/heart_data.csv">Heart & Health ❤️🏥</option>
+          <option value="/assets/datasets/customers.csv">Customers 🛒</option>
 
+
+        </select>
+        <p>Additionally you can make the categorical attributes also numeric: </p>
         <button class="btn btn-primary" (click)="convert()">Convert Categorical to Numerical</button>
+
+
       </div>
       <div class="col-sm-6 card desc_for_upload" id="desc_for_upload">
-        Here you can upload your custom datafile as CSV. We try to bring it into the right shape to be used for the other functionalities.
-        The file must be structured in the following way:
+        <p>Here you can upload your custom datafile as CSV.</p>
+        <input type='file' (change)="fileChanged($event)">
+        <p>   We try to bring it into the right shape to be used for the other functionalities.
+          The file must be structured in the following way:</p>
         <ul>
           <li>first-row: feature names seperated by seperator</li>
           <li>second and following-rows: feature values seperated by seperator</li>
           <li>id columns are not allowed</li>
           <li>if there are to many rows there is some sampling technique used</li>
         </ul></div>
+    </div>
+    <div class="row">
+      <p></p>
+      <hr>
+      <p></p>
+
     </div>
     <div class="row">
       <div class="col-sm-12 card">
@@ -37,6 +53,7 @@
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10" id="le_tablaux">
+        <p></p>
         <table id="inspect_table" class="table table-striped">
           <tr *ngFor="let rw of prev; index as i">
             <td *ngFor="let elem of rw; index as i">{{elem}}</td>
@@ -46,6 +63,17 @@
       </div>
       <div class="col-sm-1"></div>
 
+
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>References for Datasets</p>
+        <ul>
+          <li>https://www.kaggle.com/datasets/thedevastator/exploring-risk-factors-for-cardiovascular-diseas</li>
+          <li>https://www.kaggle.com/datasets/datascientistanna/customers-dataset</li>
+          <li>https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset</li>
+        </ul>
+      </div>
 
     </div>
   </div>

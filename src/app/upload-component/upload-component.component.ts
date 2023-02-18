@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{ GlobalVars} from "../global-vars";
 import {Router, NavigationEnd,ActivatedRoute} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 import * as Console from "console";
 
 
@@ -18,7 +20,8 @@ export class UploadComponentComponent implements OnInit {
   leng = 100;
   featu=10;
   prev: any = [[".", ".", "."], [".", ".", "."]];
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  option_selected: string = GlobalVars.path;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -34,13 +37,29 @@ export class UploadComponentComponent implements OnInit {
     }, 200);
   }
 
+  activateFile(){
+    this.http.get(GlobalVars.path, { responseType: 'text' })
+        .subscribe(data => {
+          GlobalVars.datahandler.loadCSV(data)
+          // @ts-ignore
+          setTimeout(this.router.navigateByUrl('/waiting_room'), 2000)
+
+        });
+  }
+
   fileChanged(e: Event) {
+    // @ts-ignore
+
     this.leng = GlobalVars.datahandler.table.length
     this.featu = GlobalVars.datahandler.table[0].length
-
-
     // @ts-ignore
     this.file = e.target.files[0];
+    this.fileloader();
+
+
+  }
+
+  fileloader(){
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       //console.log(fileReader.result);
@@ -54,8 +73,6 @@ export class UploadComponentComponent implements OnInit {
     this.ngOnInit();
     // @ts-ignore
     setTimeout(this.router.navigateByUrl('/waiting_room'), 2000)
-
-
 
   }
 
@@ -71,7 +88,6 @@ export class UploadComponentComponent implements OnInit {
 
   private convert_and_extend(value:number) {
 
-
     //get num of individual values
     let myset: string[] = [];
     for(let j=0;j<GlobalVars.datahandler.table.length;j++){
@@ -86,7 +102,7 @@ export class UploadComponentComponent implements OnInit {
     }
     console.log("length of individual values check")
     console.log(myset)
-    if(myset.length>=8 || myset.length<2){
+    if(myset.length>=15 || myset.length<2){
       console.log("Reject")
       return 0;
     }
@@ -150,5 +166,12 @@ export class UploadComponentComponent implements OnInit {
     this.featu = GlobalVars.datahandler.table[0].length
     this.prev = [GlobalVars.datahandler.columnNames, GlobalVars.datahandler.dataType]
     return true;
+  }
+
+  onOptionsSelected($event: any) {
+    if($event != "default"){
+      GlobalVars.path = $event;
+    }
+
   }
 }
