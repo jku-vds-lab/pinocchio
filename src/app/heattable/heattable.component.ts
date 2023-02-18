@@ -96,6 +96,10 @@ export class HeattableComponent implements OnInit {
 
 
         }
+        else if(row == col){
+          this.table[row].push({outwrite:"", sign: 'no_val'})
+
+        }
         else{
           this.signis_all++;
           let sig = this.getval(this.labels[row-1]["value"], this.labels[col-1]["value"]).sigv

@@ -10,6 +10,7 @@ td{
     max-width: 7rem;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-align: center;
 }
 .cl-true{
     background-color: rgba(0, 255, 0, 0.5);
@@ -30,4 +31,7 @@ table{
 }
 #spinner_waiter_false{
     visibility: hidden;
+}
+.cl_no_val{
+    background-color: #111111;
 }
