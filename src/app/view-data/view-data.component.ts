@@ -23,7 +23,7 @@ export class ViewDataComponent implements OnInit {
         }
 
       });
-    }, 500);
+    }, 100);
   }
 
 }

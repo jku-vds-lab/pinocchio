@@ -23,5 +23,5 @@ export class GlobalVars {
     static line: any[] = [{x: 50, y:50}];
     static status: boolean = false;
   static prev_data_loaded: boolean = false;
-  static path: string = "/assets/datasets/0HotelReservations.csv";
+  static path: string = "/assets/datasets/default.csv";
 }

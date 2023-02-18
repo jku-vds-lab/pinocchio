@@ -20,7 +20,7 @@ export class UploadComponentComponent implements OnInit {
   leng = 100;
   featu=10;
   prev: any = [[".", ".", "."], [".", ".", "."]];
-  option_selected: string = GlobalVars.path;
+  option_selected: string | undefined;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -28,6 +28,7 @@ export class UploadComponentComponent implements OnInit {
       setTimeout(() => {
         if(GlobalVars.prev_data_loaded){
           this.init()
+          this.option_selected = GlobalVars.path;
         }
         else{
           this.ngOnInit();
