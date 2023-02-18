@@ -161,13 +161,19 @@ export class HeattableComponent implements OnInit {
         }
 
         //console.log("new and old p "+p+" - "+all[max].p)
-
-        this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
-        this.table[all[max].r][all[max].c].sign = p < 0.05
-        if(p < 0.05){
-          this.signis++;
+        if(all[max].r != all[max].c){
+          this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
+          this.table[all[max].r][all[max].c].sign = p < 0.05
+          if(p < 0.05){
+            this.signis++;
+          }
+          miter++;
         }
-        miter++;
+        else{
+          this.table[all[max].r][all[max].c].outwrite = ''//p.toFixed(2) + "<" + 0.05
+          this.table[all[max].r][all[max].c].sign = 'no_val'
+
+        }
 
       }
 
@@ -190,13 +196,19 @@ export class HeattableComponent implements OnInit {
         let p = all[max].p
         p = p*((this.labels.length*this.labels.length)-miter);
         //console.log("new and old p "+p+" - "+all[max].p)
-
-        this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
-        this.table[all[max].r][all[max].c].sign = p < 0.05
-        if(p < 0.05){
-          this.signis++;
+        if(all[max].r != all[max].c){
+          this.table[all[max].r][all[max].c].outwrite = '☑️'//p.toFixed(2) + "<" + 0.05
+          this.table[all[max].r][all[max].c].sign = p < 0.05
+          if(p < 0.05){
+            this.signis++;
+          }
+          miter++;
         }
-        miter++;
+        else{
+          this.table[all[max].r][all[max].c].outwrite = ''//p.toFixed(2) + "<" + 0.05
+          this.table[all[max].r][all[max].c].sign = 'no_val'
+
+        }
 
       }
     }
