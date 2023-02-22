@@ -1,18 +1,22 @@
-<main>
+<main >
   <p>
     Dear User, please look at the data!
     <br> Can you find some Reltionship?
     Seems like it right?
   </p>
   <h1>Linear Regression / OLS with t-test</h1>
+  <section class="reg{{this.t>this.compare}}">
   <form>
     <div class="row">
       <div class="col-sm-6">
+        <p>x-axis - horizontal</p>
         <select (change)="onSelected($event,0)" class="form-select">
           <option *ngFor="let label of labels; index as i" value="{{label['value']}}">{{label['key']}}</option>
         </select>
       </div>
       <div class="col-sm-6">
+        <p>y-axis - vertical</p>
+
         <select (change)="onSelected($event, 1)" class="form-select">
           <option *ngFor="let label of labels; index as i" value="{{label['value']}}">{{label['key']}}</option>
         </select>
@@ -89,6 +93,7 @@
   <div class="row">
     <p></p>
   </div>
+  </section>
   <div class="row">
     <div class="col-sm-12">
       <h1>Chi2 Test</h1>
