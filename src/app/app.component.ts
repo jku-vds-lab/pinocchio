@@ -13,9 +13,7 @@ export class AppComponent {
   private posts: any;
   constructor(private httpService: HttpService) { }
   ngOnInit() {
-    if(window.location.origin == "https://jku-vds-lab.at"){
-      GlobalVars.path_ = "/pinocchio"
-    }
+
     GlobalVars.prev_data_loaded = false;
     this.httpService.getPosts().subscribe(
         (response: any) => {
