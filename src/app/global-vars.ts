@@ -23,5 +23,8 @@ export class GlobalVars {
     static line: any[] = [{x: 50, y:50}];
     static status: boolean = false;
   static prev_data_loaded: boolean = false;
-  static path: string = "/assets/datasets/default.csv";
+  static path_: string = "";
+
+  static path: string = GlobalVars.path_+"/assets/datasets/default.csv";
+
 }

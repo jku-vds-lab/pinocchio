@@ -21,11 +21,11 @@ export class UploadComponentComponent implements OnInit {
   featu=10;
   prev: any = [[".", ".", "."], [".", ".", "."]];
   option_selected: string | undefined;
+  public gv: string = GlobalVars.path_;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    alert(window.location.origin)
     setTimeout(() => {
       setTimeout(() => {
         if(GlobalVars.prev_data_loaded){
