@@ -25,6 +25,6 @@ export class GlobalVars {
   static prev_data_loaded: boolean = false;
   static path_: string = "";
 
-  static path: string = GlobalVars.path_+"/assets/datasets/default.csv";
+  static path: string = "assets/datasets/default.csv";
 
 }
