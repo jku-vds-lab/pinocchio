@@ -25,6 +25,7 @@ export class UploadComponentComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
+    alert(GlobalVars.path_)
     // @ts-ignore
     setTimeout(() => {
       setTimeout(() => {
