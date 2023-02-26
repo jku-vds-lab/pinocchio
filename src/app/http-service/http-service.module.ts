@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class HttpService {
 
-  private url = 'http://localhost:4200/assets/default.csv';
+  private url = 'https://jku-vds-lab.at/pinocchio/assets/default.csv';
 
   constructor(private http: HttpClient) { }
 
